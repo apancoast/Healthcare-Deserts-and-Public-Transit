@@ -1,0 +1,11 @@
+hdpt.code-workspace
+.venv/
+secrets/
+lambdas_code/
+sources/
+/dbt-hdpt/.user.yml
+/hdpt.code-workspace
+/.env
+logs/
+DuckDB/hdpt_dev.duckdb
+/sources

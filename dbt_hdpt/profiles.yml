@@ -1,0 +1,13 @@
+dbt_hdpt:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: '../DuckDB/hdpt_dev.duckdb'
+      extensions:
+        - httpfs
+        - parquet
+      settings:
+        s3_region: us-east-2
+        s3_access_key_id: "{{ env_var('S3_ACCESS_KEY_ID') }}"
+        s3_secret_access_key: "{{ env_var('S3_SECRET_ACCESS_KEY') }}"
