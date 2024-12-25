@@ -9,3 +9,4 @@ sources/
 logs/
 DuckDB/hdpt_dev.duckdb
 /sources
+/project.code-workspace
