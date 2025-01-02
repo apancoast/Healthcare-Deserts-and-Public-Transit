@@ -1,61 +1,75 @@
 --Parsing JSONs
---attach for session
-ATTACH 's3://hdpt/raw/jsons/s2704.json' as json_file;
+
 
 --Preview data
-with t1 as (SELECT *
-FROM read_json_objects('s3://hdpt/raw/jsons/s2704.json')
-LIMIT 2)
-select  from t1 limit 1
+SELECT *
+; describe FROM read_json_objects('s3://hdpt/raw/jsons/s2704.json'); --read as a json
+
+SELECT * FROM read_json('s3://hdpt/raw/jsons/s2704.json') --this function reads as a table
 ;
 
---describe it
-describe from read_json_objects('s3://hdpt/raw/jsons/s2704.json') limit 1;
+SELECT * FROM read_json_objects('s3://hdpt/raw/jsons/s2704.json') limit 1;
 
-SELECT $[0] as headers
-FROM read_json_objects('s3://hdpt/raw/jsons/s2704.json')
-LIMIT 1;
-
---ChatGPT suggestion
-WITH parsed_json AS (
-    SELECT
-        jsno(json) AS json_array
-    FROM read_json('s3://hdpt/raw/jsons/s2704.json')
-),
-
-split_headers_and_rows AS (
-    SELECT
-        json_array[0] AS headers, -- Extract headers (first element)
-        json_array[1:] AS rows   -- Extract rows (remaining elements)
-    FROM parsed_json
-),
-
-unnest_rows AS (
-    SELECT
-        idx AS row_index,
-        rows AS row_data
-    FROM split_headers_and_rows, UNNEST(rows) WITH ORDINALITY AS t(rows, idx)
-),
-
-map_headers_to_columns AS (
-    SELECT
-        row_index,
-        headers[column_index - 1] AS column_name,
-        row_data[column_index - 1] AS column_value
-    FROM unnest_rows, UNNEST(headers) WITH ORDINALITY AS t(headers, column_index)
-),
-
-pivoted_table AS (
-    SELECT
-        row_index,
-        column_name,
-        column_value
-    FROM map_headers_to_columns
+-- trying this
+with raw_data as (
+SELECT * FROM read_json('s3://hdpt/raw/jsons/s2704.json')
 )
-SELECT
-    *
-FROM pivoted_table
-PIVOT (
-    MAX(column_value) -- Aggregate function for pivoting (values are unique per row/column combo)
-    FOR column_name IN (SELECT DISTINCT headers FROM split_headers_and_rows)
-);
+, headers AS (-- Step 3: Extract headers
+    SELECT * AS header_array
+    FROM raw_data
+    LIMIT 1
+)
+--, rows AS ( --Step 4: Extract rows (all but the first row)
+--    SELECT *
+--    FROM raw_data
+--    OFFSET 1
+--)
+--, final_data AS ( -- Step 5: Dynamically construct a table using headers
+--    SELECT 
+--        row_array[1] AS {{ (SELECT header_array[1] FROM headers) }},
+--        row_array[2] AS {{ (SELECT header_array[2] FROM headers) }}
+--        -- Add more dynamically if needed
+--    FROM rows
+--)
+--what about unnesting everything
+SELECT unnest(header_array) AS x, generate_subscripts(header_array, 1) as y from headers;
+
+SELECT unnest(header_array) FROM headers; -- Can I return this array flattened, set it as a variable using or at least in dbt, then use it for a "CREATE TABLE foo USING"
+
+SELECT *
+FROM final_data;
+
+--from dbt rec
+WITH raw_data AS ( -- Step 1: Read the JSON file
+    SELECT *
+    FROM read_json('s3://hdpt/raw/jsons/s2704.json')
+)
+, unnested_data AS ( -- Step 2: Unnest each row (array) into individual elements
+    SELECT 
+        row_number() OVER () AS record_id, 
+        unnest(json) AS element
+    FROM raw_data
+	--QUALIFY row_id = 2;
+)
+, header as (
+	SELECT *
+	FROM unnested_data
+	WHERE record_id = 1
+)
+PIVOT header
+ON row_id
+USING ⟨values⟩
+GROUP BY record
+;
+    
+    
+--), pivoted_data AS ( -- Step 3: Pivot unnested elements into columns
+--    SELECT 
+--        row_id,
+--        351 -- Adjust max_columns based on expected data size
+--    FROM (
+--        SELECT 
+--            row_id, 
+--            list_agg(element) AS elements
+--        FROM unnested_data
+--        GROUP BY row_id
