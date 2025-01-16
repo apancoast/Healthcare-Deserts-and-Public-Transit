@@ -1,39 +1,43 @@
-
-# Name your project! Project names should contain only lowercase characters
+# Rename this project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
 name: 'dbt_hdpt'
 version: '1.0.0'
+config-version: 2
 
-# This setting configures which "profile" dbt uses for this project.
+# This setting configures which "profile" dbt uses for this project. 
+# In dbt Cloud IDE, this field is unused.
 profile: 'dbt_hdpt'
 
 # These configurations specify where dbt should look for different types of files.
-# The `model-paths` config, for example, states that models in this project can be
-# found in the "models/" directory. You probably won't need to change these!
+# The `source-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You don't need to change these for this project.
 model-paths: ["models"]
-analysis-paths: ["analyses"]
+analysis-paths: ["analysis"]
 test-paths: ["tests"]
-seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
 clean-targets:         # directories to be removed by `dbt clean`
-  - "target"
-  - "dbt_packages"
-
+    - "target"
+    - "dbt_modules"
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
-# In this example config, we tell dbt to build all models in the example/
-# directory as views. These settings can be overridden in the individual model
-# files using the `{{ config(...) }}` macro.
+# In this config, we tell dbt how to build the models, where to build them, which warehouse 
+# to use, and what query tag to provide on the snowflake site. 
+# These settings can be overridden in the individual model files
+# using the `{{ config(...) }}` macro. 
 models:
   dbt_hdpt:
-    # Config indicated by + and applies to all files under models/example/
-    staging:
-      +materialized: table
-    
-    modeled:
-      +materialized: table
+    # When you rename the project up top, remember to rename it here too. 
+      staging:
+          # Applies to all files under models/staging 
+          +materialized: view
+          schema: stg
+          # This configuration builds every model in the staging directory into a schema named staging_<target_schema>
+          # learn more about custom schemas: https://docs.getdbt.com/docs/building-a-dbt-project/building-models/using-custom-schemas
+      # marts:
+      #    # Applies to all files under models/marts/core
+      #     +materialized: table 

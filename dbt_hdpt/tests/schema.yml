@@ -1,0 +1,5 @@
+version: 2
+data_tests:
+  - name: json_row_count
+    description: >
+      Tests that stage tables keeps the same amount of records as JSON source.

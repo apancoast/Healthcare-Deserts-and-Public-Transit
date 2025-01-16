@@ -13,3 +13,5 @@ DuckDB/hdpt_dev.duckdb
 duckdb/test_db.duckdb
 duckdb/hdpt_dev.duckdb.wal
 app.js
+DuckDB/
+/python

@@ -1,0 +1,33 @@
+
+version: 2
+
+models:
+  - name: stg_census_bureau__public_insurance
+    description: "Attributes selected for this project from the Census Bureau source S2704 for all Census Blocks in Mecklenburg County. Contains estimated totals and percentages of types of public healthcare coverage by age brackets."
+    data_tests:
+      - json_row_count:
+          source_name: census_bureau
+          table_name: public_insurance
+          pivot_model_name: stg_census_bureau__public_insurance
+    columns:
+      - name: geo_id
+        type: primary_key
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_census_bureau__household_vehicles
+    description: "Attributes selected for this project from the Census Bureau source DP04 for all Census Blocks in Mecklenburg County. Contains estimated totals and percentages of housing tenure, household size, and count of vehicles available to household."
+    data_tests:
+      - json_row_count:
+          source_name: census_bureau
+          table_name: public_insurance
+          pivot_model_name: stg_census_bureau__household_vehicles
+    columns:
+      - name: geo_id
+        type: primary_key
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
