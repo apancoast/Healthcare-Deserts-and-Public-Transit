@@ -6,7 +6,7 @@ sources:
     meta:
       external_location: "s3://hdpt/raw/census_bureau/{name}.json" 
     tables:
-      - name: public_insurance
-        description: "All variables in ACS's S2704 group for Mecklenburg County at the Census Block level."
-      - name: household_vehicles
-        description: "All variables in ACS's DP04 group for Mecklenburg County at the Census Block level."
+      - name: s2704
+        description: "All variables in ACS's S2704 group, Public Health Insurance Coverage by Type and Select Characteristics, for Mecklenburg County at the Census Block level."
+      - name: dp04
+        description: "All variables in ACS's DP04 group, Select Housing Characteristics, for Mecklenburg County at the Census Block level."

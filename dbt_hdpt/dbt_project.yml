@@ -17,10 +17,10 @@ analysis-paths: ["analysis"]
 test-paths: ["tests"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
+seed-paths: ["seeds"]
 
 clean-targets:         # directories to be removed by `dbt clean`
     - "target"
-    - "dbt_modules"
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -28,16 +28,20 @@ clean-targets:         # directories to be removed by `dbt clean`
 # In this config, we tell dbt how to build the models, where to build them, which warehouse 
 # to use, and what query tag to provide on the snowflake site. 
 # These settings can be overridden in the individual model files
-# using the `{{ config(...) }}` macro. 
+# # using the `{{ config(...) }}` macro. 
 models:
   dbt_hdpt:
     # When you rename the project up top, remember to rename it here too. 
       staging:
           # Applies to all files under models/staging 
-          +materialized: view
+          +materialized: table
           schema: stg
           # This configuration builds every model in the staging directory into a schema named staging_<target_schema>
           # learn more about custom schemas: https://docs.getdbt.com/docs/building-a-dbt-project/building-models/using-custom-schemas
-      # marts:
-      #    # Applies to all files under models/marts/core
-      #     +materialized: table 
+#       # marts:
+#       #    # Applies to all files under models/marts/core
+#       #     +materialized: table 
+
+seeds:  # https://docs.getdbt.com/reference/seed-configs
+  dbt_hdpt:
+    schema: stg_metadata

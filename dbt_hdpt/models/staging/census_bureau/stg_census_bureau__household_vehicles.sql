@@ -1,45 +1,14 @@
-with pivoted_data as ({{ pivot_json("census_bureau", "household_vehicles") }})
+{%- set seed_ref = ref('seed_census_bureau__dp04_metadata') %}
+
+{%- set cols = dbt_utils.get_column_values(table=seed_ref, column='column_name', order_by='min(index)') %}
+{%- set as_cols = dbt_utils.get_column_values(table=seed_ref, column='new_label', order_by='min(index)') %}
+{%- set data_types = get_col_values_from_query(table=seed_ref, column='data_type') %}
+
+with pivoted_data as (
+    {{ pivot_json('census_bureau', 'dp04', seed_ref) }}
+    )
 select
-    geo_id::string as geo_id,
-    'name'::string as geo_name,
-    dp04_0045e::int as housing_tenure,
-    dp04_0045m::int as moe_housing_tenure,
-    dp04_0045pe::int as pct_housing_tenure,
-    dp04_0045pm::int as pct_moe_housing_tenure,
-    dp04_0046e::int as housing_tenure_owner_occ,
-    dp04_0046m::int as moe_housing_tenure_owner_occ,
-    dp04_0046pe::float as pct_housing_tenure_owner_occ,
-    dp04_0046pm::float as pct_moe_housing_tenure_owner_occ,
-    dp04_0047e::int as housing_tenure_renter_occ,
-    dp04_0047m::int as moe_housing_tenure_renter_occ,
-    dp04_0047pe::float as pct_housing_tenure_renter_occ,
-    dp04_0047pm::float as pct_moe_housing_tenure_renter_occ,
-    dp04_0048e::float as housing_tenure_avg_hh_size_owner,
-    dp04_0048m::float as moe_housing_tenure_avg_hh_size_owner,
-    dp04_0048pe::int as pct_housing_tenure_avg_hh_size_owner,
-    dp04_0048pm::int as pct_moe_housing_tenure_avg_hh_size_owner,
-    dp04_0049e::float as housing_tenure_avg_hh_size_renter,
-    dp04_0049m::float as moe_housing_tenure_avg_hh_size_renter,
-    dp04_0049pe::int as pct_housing_tenure_avg_hh_size_renter,
-    dp04_0049pm::int as pct_moe_housing_tenure_avg_hh_size_renter,
-    dp04_0057e::int as veh_avail,
-    dp04_0057m::int as moe_veh_avail,
-    dp04_0057pe::int as pct_veh_avail,
-    dp04_0057pm::int as pct_moe_veh_avail,
-    dp04_0058e::int as veh_avail_veh_none,
-    dp04_0058m::int as moe_veh_avail_veh_none,
-    dp04_0058pe::float as pct_veh_avail_veh_none,
-    dp04_0058pm::float as pct_moe_veh_avail_veh_none,
-    dp04_0059e::int as veh_avail_veh_1,
-    dp04_0059m::int as moe_veh_avail_veh_1,
-    dp04_0059pe::float as pct_veh_avail_veh_1,
-    dp04_0059pm::float as pct_moe_veh_avail_veh_1,
-    dp04_0060e::int as veh_avail_veh_2,
-    dp04_0060m::int as moe_veh_avail_veh_2,
-    dp04_0060pe::float as pct_veh_avail_veh_2,
-    dp04_0060pm::float as pct_moe_veh_avail_veh_2,
-    dp04_0061e::int as veh_avail_veh_3plus,
-    dp04_0061m::int as moe_veh_avail_veh_3plus,
-    dp04_0061pe::float as pct_veh_avail_veh_3plus,
-    dp04_0061pm::float as pct_moe_veh_avail_veh_3plus
+    {%- for index in range(0, cols|length) %}
+    {{ cols[index] }}::{{ data_types[index] }} as {{ as_cols[index] }}{%- if not loop.last -%},{% endif %}
+    {%- endfor %}
 from pivoted_data

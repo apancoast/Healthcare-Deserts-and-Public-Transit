@@ -1,4 +1,3 @@
-
 version: 2
 
 models:
@@ -7,8 +6,7 @@ models:
     data_tests:
       - json_row_count:
           source_name: census_bureau
-          table_name: public_insurance
-          pivot_model_name: stg_census_bureau__public_insurance
+          table_name: s2704
     columns:
       - name: geo_id
         type: primary_key
@@ -22,12 +20,94 @@ models:
     data_tests:
       - json_row_count:
           source_name: census_bureau
-          table_name: public_insurance
-          pivot_model_name: stg_census_bureau__household_vehicles
+          table_name: dp04
     columns:
       - name: geo_id
         type: primary_key
         description: "The primary key for this table"
         data_tests:
-          - unique
           - not_null
+          - unique
+        data_type: varchar
+      - name: geo_name
+        data_type: varchar
+      - name: housing_tenure
+        data_type: integer
+      - name: moe_housing_tenure
+        data_type: integer
+      - name: pct_housing_tenure
+        data_type: integer
+      - name: pct_moe_housing_tenure
+        data_type: integer
+      - name: housing_tenure_owner_occ
+        data_type: integer
+      - name: moe_housing_tenure_owner_occ
+        data_type: integer
+      - name: pct_housing_tenure_owner_occ
+        data_type: float
+      - name: pct_moe_housing_tenure_owner_occ
+        data_type: float
+      - name: housing_tenure_renter_occ
+        data_type: integer
+      - name: moe_housing_tenure_renter_occ
+        data_type: integer
+      - name: pct_housing_tenure_renter_occ
+        data_type: float
+      - name: pct_moe_housing_tenure_renter_occ
+        data_type: float
+      - name: housing_tenure_avg_hh_size_owner
+        data_type: float
+      - name: moe_housing_tenure_avg_hh_size_owner
+        data_type: float
+      - name: pct_housing_tenure_avg_hh_size_owner
+        data_type: integer
+      - name: pct_moe_housing_tenure_avg_hh_size_owner
+        data_type: integer
+      - name: housing_tenure_avg_hh_size_renter
+        data_type: float
+      - name: moe_housing_tenure_avg_hh_size_renter
+        data_type: float
+      - name: pct_housing_tenure_avg_hh_size_renter
+        data_type: integer
+      - name: pct_moe_housing_tenure_avg_hh_size_renter
+        data_type: integer
+      - name: veh_avail
+        data_type: integer
+      - name: moe_veh_avail
+        data_type: integer
+      - name: pct_veh_avail
+        data_type: integer
+      - name: pct_moe_veh_avail
+        data_type: integer
+      - name: veh_avail_veh_none
+        data_type: integer
+      - name: moe_veh_avail_veh_none
+        data_type: integer
+      - name: pct_veh_avail_veh_none
+        data_type: float
+      - name: pct_moe_veh_avail_veh_none
+        data_type: float
+      - name: veh_avail_veh_1
+        data_type: integer
+      - name: moe_veh_avail_veh_1
+        data_type: integer
+      - name: pct_veh_avail_veh_1
+        data_type: float
+      - name: pct_moe_veh_avail_veh_1
+        data_type: float
+      - name: veh_avail_veh_2
+        data_type: integer
+      - name: moe_veh_avail_veh_2
+        data_type: integer
+      - name: pct_veh_avail_veh_2
+        data_type: float
+      - name: pct_moe_veh_avail_veh_2
+        data_type: float
+      - name: veh_avail_veh_3plus
+        data_type: integer
+      - name: moe_veh_avail_veh_3plus
+        data_type: integer
+      - name: pct_veh_avail_veh_3plus
+        data_type: float
+      - name: pct_moe_veh_avail_veh_3plus
+      data_type: float

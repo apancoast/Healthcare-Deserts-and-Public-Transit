@@ -1,0 +1,43 @@
+index,column_name,original_label,new_label,data_type
+1,GEO_ID,Geography,geo_id,string
+2,NAME,Geographic Area Name,geo_name,string
+3,DP04_0045E,Estimate!!HOUSING TENURE!!Occupied housing units,housing_tenure,int
+4,DP04_0045M,Margin of Error!!HOUSING TENURE!!Occupied housing units,moe_housing_tenure,int
+5,DP04_0045PE,Percent!!HOUSING TENURE!!Occupied housing units,pct_housing_tenure,int
+6,DP04_0045PM,Percent Margin of Error!!HOUSING TENURE!!Occupied housing units,pct_moe_housing_tenure,int
+7,DP04_0046E,Estimate!!HOUSING TENURE!!Occupied housing units!!Owner-occupied,housing_tenure_owner_occ,int
+8,DP04_0046M,Margin of Error!!HOUSING TENURE!!Occupied housing units!!Owner-occupied,moe_housing_tenure_owner_occ,int
+9,DP04_0046PE,Percent!!HOUSING TENURE!!Occupied housing units!!Owner-occupied,pct_housing_tenure_owner_occ,float
+10,DP04_0046PM,Percent Margin of Error!!HOUSING TENURE!!Occupied housing units!!Owner-occupied,pct_moe_housing_tenure_owner_occ,float
+11,DP04_0047E,Estimate!!HOUSING TENURE!!Occupied housing units!!Renter-occupied,housing_tenure_renter_occ,int
+12,DP04_0047M,Margin of Error!!HOUSING TENURE!!Occupied housing units!!Renter-occupied,moe_housing_tenure_renter_occ,int
+13,DP04_0047PE,Percent!!HOUSING TENURE!!Occupied housing units!!Renter-occupied,pct_housing_tenure_renter_occ,float
+14,DP04_0047PM,Percent Margin of Error!!HOUSING TENURE!!Occupied housing units!!Renter-occupied,pct_moe_housing_tenure_renter_occ,float
+15,DP04_0048E,Estimate!!HOUSING TENURE!!Occupied housing units!!Average household size of owner-occupied unit,housing_tenure_avg_hh_size_owner,float
+16,DP04_0048M,Margin of Error!!HOUSING TENURE!!Occupied housing units!!Average household size of owner-occupied unit,moe_housing_tenure_avg_hh_size_owner,float
+17,DP04_0048PE,Percent!!HOUSING TENURE!!Occupied housing units!!Average household size of owner-occupied unit,pct_housing_tenure_avg_hh_size_owner,int
+18,DP04_0048PM,Percent Margin of Error!!HOUSING TENURE!!Occupied housing units!!Average household size of owner-occupied unit,pct_moe_housing_tenure_avg_hh_size_owner,int
+19,DP04_0049E,Estimate!!HOUSING TENURE!!Occupied housing units!!Average household size of renter-occupied unit,housing_tenure_avg_hh_size_renter,float
+20,DP04_0049M,Margin of Error!!HOUSING TENURE!!Occupied housing units!!Average household size of renter-occupied unit,moe_housing_tenure_avg_hh_size_renter,float
+21,DP04_0049PE,Percent!!HOUSING TENURE!!Occupied housing units!!Average household size of renter-occupied unit,pct_housing_tenure_avg_hh_size_renter,int
+22,DP04_0049PM,Percent Margin of Error!!HOUSING TENURE!!Occupied housing units!!Average household size of renter-occupied unit,pct_moe_housing_tenure_avg_hh_size_renter,int
+23,DP04_0057E,Estimate!!VEHICLES AVAILABLE!!Occupied housing units,veh_avail,int
+24,DP04_0057M,Margin of Error!!VEHICLES AVAILABLE!!Occupied housing units,moe_veh_avail,int
+25,DP04_0057PE,Percent!!VEHICLES AVAILABLE!!Occupied housing units,pct_veh_avail,int
+26,DP04_0057PM,Percent Margin of Error!!VEHICLES AVAILABLE!!Occupied housing units,pct_moe_veh_avail,int
+27,DP04_0058E,Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!No vehicles available,veh_avail_veh_none,int
+28,DP04_0058M,Margin of Error!!VEHICLES AVAILABLE!!Occupied housing units!!No vehicles available,moe_veh_avail_veh_none,int
+29,DP04_0058PE,Percent!!VEHICLES AVAILABLE!!Occupied housing units!!No vehicles available,pct_veh_avail_veh_none,float
+30,DP04_0058PM,Percent Margin of Error!!VEHICLES AVAILABLE!!Occupied housing units!!No vehicles available,pct_moe_veh_avail_veh_none,float
+31,DP04_0059E,Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!1 vehicle available,veh_avail_veh_1,int
+32,DP04_0059M,Margin of Error!!VEHICLES AVAILABLE!!Occupied housing units!!1 vehicle available,moe_veh_avail_veh_1,int
+33,DP04_0059PE,Percent!!VEHICLES AVAILABLE!!Occupied housing units!!1 vehicle available,pct_veh_avail_veh_1,float
+34,DP04_0059PM,Percent Margin of Error!!VEHICLES AVAILABLE!!Occupied housing units!!1 vehicle available,pct_moe_veh_avail_veh_1,float
+35,DP04_0060E,Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!2 vehicles available,veh_avail_veh_2,int
+36,DP04_0060M,Margin of Error!!VEHICLES AVAILABLE!!Occupied housing units!!2 vehicles available,moe_veh_avail_veh_2,int
+37,DP04_0060PE,Percent!!VEHICLES AVAILABLE!!Occupied housing units!!2 vehicles available,pct_veh_avail_veh_2,float
+38,DP04_0060PM,Percent Margin of Error!!VEHICLES AVAILABLE!!Occupied housing units!!2 vehicles available,pct_moe_veh_avail_veh_2,float
+39,DP04_0061E,Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!3 or more vehicles available,veh_avail_veh_3plus,int
+40,DP04_0061M,Margin of Error!!VEHICLES AVAILABLE!!Occupied housing units!!3 or more vehicles available,moe_veh_avail_veh_3plus,int
+41,DP04_0061PE,Percent!!VEHICLES AVAILABLE!!Occupied housing units!!3 or more vehicles available,pct_veh_avail_veh_3plus,float
+42,DP04_0061PM,Percent Margin of Error!!VEHICLES AVAILABLE!!Occupied housing units!!3 or more vehicles available,pct_moe_veh_avail_veh_3plus,float

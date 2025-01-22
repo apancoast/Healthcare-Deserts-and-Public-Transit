@@ -1,0 +1,9 @@
+version: 2
+
+seeds:
+  - name: seed_census_bureau__dp04_metadata
+    config:
+      enabled: true
+  - name: seed_census_bureau__s2704_metadata
+    config:
+      enabled: true
