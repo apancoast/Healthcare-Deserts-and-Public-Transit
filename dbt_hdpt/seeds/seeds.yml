@@ -7,3 +7,6 @@ seeds:
   - name: seed_census_bureau__s2704_metadata
     config:
       enabled: true
+  - name: seed_hpsa__components_shapefile__data_catalog
+    config:
+      enabled: true

@@ -1,0 +1,21 @@
+version: 2
+# https://docs.getdbt.com/docs/build/sources
+
+sources:
+  - name: gtfs
+    description: "\"The General Transit Feed Specification (GTFS) is an Open Standard used to distribute relevant information about transit systems to riders. It allows public transit agencies to publish their transit data in a format that can be consumed by a wide variety of software applications,\" says https://gtfs.org/documentation/overview/. Maintained by https://mobilitydata.org/. This source's table descriptions come for https://gtfs.org/documentation/schedule/reference/#dataset-files."
+    meta:
+      external_location: s3://hdpt/raw/gtfs/{name}.txt
+    tables:
+      - name: calendar_dates
+        descrition: "Exceptions for the services defined in the calendar.txt. Conditionally Required: - Required if calendar.txt is omitted. In which case calendar_dates.txt must contain all dates of service. - Optional otherwise."
+      - name: routes
+        description: "Transit routes. A route is a group of trips that are displayed to riders as a single service."
+      - name: shapes
+        description: "Rules for mapping vehicle travel paths, sometimes referred to as route alignments."
+      - name: stop_times
+        description: "Times that a vehicle arrives at and departs from stops for each trip."
+      - name: stops
+        description: "Stops where vehicles pick up or drop off riders. Also defines stations and station entrances. Conditionally Required: - Optional if demand-responsive zones are defined in locations.geojson. - Required otherwise."
+      - name: trips
+        description: "Trips for each route. A trip is a sequence of two or more stops that occur during a specific time period."

@@ -1,0 +1,79 @@
+version: 2
+
+models:
+  - name: stg_gtfs__calendar
+    # description:
+    # data_tests:
+    #   - json_row_count:
+    #       source_name: census_bureau
+    #       table_name: s2704
+    columns:
+      - name: service_id
+        type: primary_key
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_gtfs__routes
+    columns:
+      - name: route_id
+        type: primary_key
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_gtfs__trips
+    columns:
+      - name: route_id
+        # constraints:
+        #   - type: foreign_key
+        #   - to: ref('stg_gtfs__routes')
+        #   - to_columns: [route_id]
+        description: "The foreign key to the stg_gtfs__routes table."
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_gtfs__routes')
+              field: route_id
+
+      - name: service_id
+        type: foreign_key
+        description: "The foreign key to the stg_gtfs__calendar table."
+        data_tests:
+          - not_null
+      - name: trip_id
+        type: primary_key
+        description: "The primary key for this table."
+        data_tests:
+          - unique
+          - not_null
+    
+  - name: stg_gtfs__stop_times
+    columns:
+      - name: trip_id
+        type: foreign_key
+        # description: 
+        data_tests:
+          - not_null
+      - name: stop_id
+        type: foreign_key
+        # description: 
+        data_tests:
+          - not_null
+
+  - name: stg_gtfs__stops
+    columns:
+      - name: stop_id
+        type: primary_key
+        # description: 
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_gtfs__shapes
+    columns:
+      - name: shape_id
+        data_tests:
+          - not_null

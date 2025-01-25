@@ -1,0 +1,44 @@
+,,,,,
+stage_index,raw_index,raw_column_name,description,stage_column_name,data_type
+1,1145,GEO_ID,Geography,geo_id,string
+2,1146,NAME,Geographic area name,geo_name,string
+3,353,DP04_0045E,Estimate. Housing tenure. Occupied housing units,housing_tenure,int
+4,355,DP04_0045M,Margin of error. Housing tenure. Occupied housing units,moe_housing_tenure,int
+5,357,DP04_0045PE,Percent. Housing tenure. Occupied housing units,pct_housing_tenure,int
+6,359,DP04_0045PM,Percent margin of error. Housing tenure. Occupied housing units,pct_moe_housing_tenure,int
+7,361,DP04_0046E,Estimate. Housing tenure. Occupied housing units. Owner-occupied,housing_tenure_owner_occ,int
+8,363,DP04_0046M,Margin of error. Housing tenure. Occupied housing units. Owner-occupied,moe_housing_tenure_owner_occ,int
+9,365,DP04_0046PE,Percent. Housing tenure. Occupied housing units. Owner-occupied,pct_housing_tenure_owner_occ,float
+10,367,DP04_0046PM,Percent margin of error. Housing tenure. Occupied housing units. Owner-occupied,pct_moe_housing_tenure_owner_occ,float
+11,369,DP04_0047E,Estimate. Housing tenure. Occupied housing units. Renter-occupied,housing_tenure_renter_occ,int
+12,371,DP04_0047M,Margin of error. Housing tenure. Occupied housing units. Renter-occupied,moe_housing_tenure_renter_occ,int
+13,373,DP04_0047PE,Percent. Housing tenure. Occupied housing units. Renter-occupied,pct_housing_tenure_renter_occ,float
+14,375,DP04_0047PM,Percent margin of error. Housing tenure. Occupied housing units. Renter-occupied,pct_moe_housing_tenure_renter_occ,float
+15,377,DP04_0048E,Estimate. Housing tenure. Occupied housing units. Average household size of owner-occupied unit,housing_tenure_avg_hh_size_owner,float
+16,379,DP04_0048M,Margin of error. Housing tenure. Occupied housing units. Average household size of owner-occupied unit,moe_housing_tenure_avg_hh_size_owner,float
+17,381,DP04_0048PE,Percent. Housing tenure. Occupied housing units. Average household size of owner-occupied unit,pct_housing_tenure_avg_hh_size_owner,int
+18,383,DP04_0048PM,Percent margin of error. Housing tenure. Occupied housing units. Average household size of owner-occupied unit,pct_moe_housing_tenure_avg_hh_size_owner,int
+19,385,DP04_0049E,Estimate. Housing tenure. Occupied housing units. Average household size of renter-occupied unit,housing_tenure_avg_hh_size_renter,float
+20,387,DP04_0049M,Margin of error. Housing tenure. Occupied housing units. Average household size of renter-occupied unit,moe_housing_tenure_avg_hh_size_renter,float
+21,389,DP04_0049PE,Percent. Housing tenure. Occupied housing units. Average household size of renter-occupied unit,pct_housing_tenure_avg_hh_size_renter,int
+22,391,DP04_0049PM,Percent margin of error. Housing tenure. Occupied housing units. Average household size of renter-occupied unit,pct_moe_housing_tenure_avg_hh_size_renter,int
+23,449,DP04_0057E,Estimate. Vehicles available. Occupied housing units,veh_avail,int
+24,451,DP04_0057M,Margin of error. Vehicles available. Occupied housing units,moe_veh_avail,int
+25,453,DP04_0057PE,Percent. Vehicles available. Occupied housing units,pct_veh_avail,int
+26,455,DP04_0057PM,Percent margin of error. Vehicles available. Occupied housing units,pct_moe_veh_avail,int
+27,457,DP04_0058E,Estimate. Vehicles available. Occupied housing units. No vehicles available,veh_avail_veh_none,int
+28,459,DP04_0058M,Margin of error. Vehicles available. Occupied housing units. No vehicles available,moe_veh_avail_veh_none,int
+29,461,DP04_0058PE,Percent. Vehicles available. Occupied housing units. No vehicles available,pct_veh_avail_veh_none,float
+30,463,DP04_0058PM,Percent margin of error. Vehicles available. Occupied housing units. No vehicles available,pct_moe_veh_avail_veh_none,float
+31,465,DP04_0059E,Estimate. Vehicles available. Occupied housing units. 1 vehicle available,veh_avail_veh_1,int
+32,467,DP04_0059M,Margin of error. Vehicles available. Occupied housing units. 1 vehicle available,moe_veh_avail_veh_1,int
+33,469,DP04_0059PE,Percent. Vehicles available. Occupied housing units. 1 vehicle available,pct_veh_avail_veh_1,float
+34,471,DP04_0059PM,Percent margin of error. Vehicles available. Occupied housing units. 1 vehicle available,pct_moe_veh_avail_veh_1,float
+35,473,DP04_0060E,Estimate. Vehicles available. Occupied housing units. 2 vehicles available,veh_avail_veh_2,int
+36,475,DP04_0060M,Margin of error. Vehicles available. Occupied housing units. 2 vehicles available,moe_veh_avail_veh_2,int
+37,477,DP04_0060PE,Percent. Vehicles available. Occupied housing units. 2 vehicles available,pct_veh_avail_veh_2,float
+38,479,DP04_0060PM,Percent margin of error. Vehicles available. Occupied housing units. 2 vehicles available,pct_moe_veh_avail_veh_2,float
+39,481,DP04_0061E,Estimate. Vehicles available. Occupied housing units. 3 or more vehicles available,veh_avail_veh_3plus,int
+40,483,DP04_0061M,Margin of error. Vehicles available. Occupied housing units. 3 or more vehicles available,moe_veh_avail_veh_3plus,int
+41,485,DP04_0061PE,Percent. Vehicles available. Occupied housing units. 3 or more vehicles available,pct_veh_avail_veh_3plus,float
+42,487,DP04_0061PM,Percent margin of error. Vehicles available. Occupied housing units. 3 or more vehicles available,pct_moe_veh_avail_veh_3plus,float

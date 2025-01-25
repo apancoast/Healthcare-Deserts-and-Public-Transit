@@ -1,0 +1,105 @@
+stage_index,raw_index,raw_column_name,description,stage_column_name,data_type
+1,1,GEO_ID,Geography,geo_id,string
+2,2,NAME,Geographic Area Name,geo_name,string
+3,3,S2704_C01_001E,Estimate. Total. Civilian noninstitutionalized population,tot_pop,int
+4,5,S2704_C01_001M,Margin of Error. Total. Civilian noninstitutionalized population,moe_tot_pop,int
+5,7,S2704_C01_002E,Estimate. Total. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination,tot_medicare_alone_or_comb,int
+6,9,S2704_C01_002M,Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination,moe_tot_medicare_alone_or_comb,int
+7,11,S2704_C01_003E,Estimate. Total. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. Under 19,tot_medicare_alone_or_comb_u19,int
+8,13,S2704_C01_003M,Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. Under 19,moe_tot_medicare_alone_or_comb_u19,int
+9,15,S2704_C01_004E,Estimate. Total. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 19 to 64 years,tot_medicare_alone_or_comb_19_64,int
+10,17,S2704_C01_004M,Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 19 to 64 years,moe_tot_medicare_alone_or_comb_19_64,int
+11,19,S2704_C01_005E,Estimate. Total. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 65 years and over,tot_medicare_alone_or_comb_65plus,int
+12,21,S2704_C01_005M,Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 65 years and over,moe_tot_medicare_alone_or_comb_65plus,int
+13,23,S2704_C01_006E,Estimate. Total. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination,tot_medicaid_alone_or_comb,int
+14,25,S2704_C01_006M,Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination,moe_tot_medicaid_alone_or_comb,int
+15,27,S2704_C01_007E,Estimate. Total. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. Under 19,tot_medicaid_alone_or_comb_u19,int
+16,29,S2704_C01_007M,Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. Under 19,moe_tot_medicaid_alone_or_comb_u19,int
+17,31,S2704_C01_008E,Estimate. Total. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 19 to 64 years,tot_medicaid_alone_or_comb_19_64,int
+18,33,S2704_C01_008M,Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 19 to 64 years,moe_tot_medicaid_alone_or_comb_19_64,int
+19,35,S2704_C01_009E,Estimate. Total. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 65 years and over,tot_medicaid_alone_or_comb_65plus,int
+20,37,S2704_C01_009M,Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 65 years and over,moe_tot_medicaid_alone_or_comb_65plus,int
+21,39,S2704_C01_010E,Estimate. Total. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination,tot_va_alone_or_comb,int
+22,41,S2704_C01_010M,Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination,moe_tot_va_alone_or_comb,int
+23,43,S2704_C01_011E,Estimate. Total. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. Under 19,tot_va_alone_or_comb_u19,int
+24,45,S2704_C01_011M,Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. Under 19,moe_tot_va_alone_or_comb_u19,int
+25,47,S2704_C01_012E,Estimate. Total. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 19 to 64 years,tot_va_alone_or_comb_19_64,int
+26,49,S2704_C01_012M,Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 19 to 64 years,moe_tot_va_alone_or_comb_19_64,int
+27,51,S2704_C01_013E,Estimate. Total. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 65 years and over,tot_va_alone_or_comb_65plus,int
+28,53,S2704_C01_013M,Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 65 years and over,moe_tot_va_alone_or_comb_65plus,int
+29,103,S2704_C01_026E,Estimate. Total. COVERAGE ALONE. Public health insurance alone,tot_pub_cov_alone,int
+30,105,S2704_C01_026M,Margin of Error. Total. COVERAGE ALONE. Public health insurance alone,moe_tot_pub_cov_alone,int
+31,107,S2704_C01_027E,Estimate. Total. COVERAGE ALONE. Public health insurance alone. Medicare coverage alone,tot_pub_cov_alone_medicare_alone,int
+32,109,S2704_C01_027M,Margin of Error. Total. COVERAGE ALONE. Public health insurance alone. Medicare coverage alone,moe_tot_pub_cov_alone_medicare_alone,int
+33,111,S2704_C01_028E,Estimate. Total. COVERAGE ALONE. Public health insurance alone. Medicaid/means tested coverage alone,tot_pub_cov_alone_medicaid_alone,int
+34,113,S2704_C01_028M,Margin of Error. Total. COVERAGE ALONE. Public health insurance alone. Medicaid/means tested coverage alone,moe_tot_pub_cov_alone_medicaid_alone,int
+35,115,S2704_C01_029E,Estimate. Total. COVERAGE ALONE. Public health insurance alone. VA health care coverage alone,tot_pub_cov_alone_va_alone,int
+36,117,S2704_C01_029M,Margin of Error. Total. COVERAGE ALONE. Public health insurance alone. VA health care coverage alone,moe_tot_pub_cov_alone_va_alone,int
+37,119,S2704_C02_001E,Estimate. Public Coverage. Civilian noninstitutionalized population,pub_cov_pop,int
+38,121,S2704_C02_001M,Margin of Error. Public Coverage. Civilian noninstitutionalized population,moe_pub_cov_pop,int
+39,123,S2704_C02_002E,Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination,pub_cov_medicare_alone_or_comb,int
+40,125,S2704_C02_002M,Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination,moe_pub_cov_medicare_alone_or_comb,int
+41,127,S2704_C02_003E,Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. Under 19,pub_cov_medicare_alone_or_comb_u19,int
+42,129,S2704_C02_003M,Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. Under 19,moe_pub_cov_medicare_alone_or_comb_u19,int
+43,131,S2704_C02_004E,Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 19 to 64 years,pub_cov_medicare_alone_or_comb_19_64,int
+44,133,S2704_C02_004M,Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 19 to 64 years,moe_pub_cov_medicare_alone_or_comb_19_64,int
+45,135,S2704_C02_005E,Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 65 years and over,pub_cov_medicare_alone_or_comb_65plus,int
+46,137,S2704_C02_005M,Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 65 years and over,moe_pub_cov_medicare_alone_or_comb_65plus,int
+47,139,S2704_C02_006E,Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination,pub_cov_medicaid_alone_or_comb,int
+48,141,S2704_C02_006M,Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination,moe_pub_cov_medicaid_alone_or_comb,int
+49,143,S2704_C02_007E,Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. Under 19,pub_cov_medicaid_alone_or_comb_u19,int
+50,145,S2704_C02_007M,Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. Under 19,moe_pub_cov_medicaid_alone_or_comb_u19,int
+51,147,S2704_C02_008E,Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 19 to 64 years,pub_cov_medicaid_alone_or_comb_19_64,int
+52,149,S2704_C02_008M,Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 19 to 64 years,moe_pub_cov_medicaid_alone_or_comb_19_64,int
+53,151,S2704_C02_009E,Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 65 years and over,pub_cov_medicaid_alone_or_comb_65plus,int
+54,153,S2704_C02_009M,Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 65 years and over,moe_pub_cov_medicaid_alone_or_comb_65plus,int
+55,155,S2704_C02_010E,Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination,pub_cov_va_alone_or_comb,int
+56,157,S2704_C02_010M,Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination,moe_pub_cov_va_alone_or_comb,int
+57,159,S2704_C02_011E,Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. Under 19,pub_cov_va_alone_or_comb_u19,int
+58,161,S2704_C02_011M,Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. Under 19,moe_pub_cov_va_alone_or_comb_u19,int
+59,163,S2704_C02_012E,Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 19 to 64 years,pub_cov_va_alone_or_comb_19_64,int
+60,165,S2704_C02_012M,Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 19 to 64 years,moe_pub_cov_va_alone_or_comb_19_64,int
+61,167,S2704_C02_013E,Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 65 years and over,pub_cov_va_alone_or_comb_65plus,int
+62,169,S2704_C02_013M,Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 65 years and over,moe_pub_cov_va_alone_or_comb_65plus,int
+63,219,S2704_C02_026E,Estimate. Public Coverage. COVERAGE ALONE. Public health insurance alone,pub_cov_pub_cov_alone,int
+64,221,S2704_C02_026M,Margin of Error. Public Coverage. COVERAGE ALONE. Public health insurance alone,moe_pub_cov_pub_cov_alone,int
+65,223,S2704_C02_027E,Estimate. Public Coverage. COVERAGE ALONE. Public health insurance alone. Medicare coverage alone,pub_cov_pub_cov_alone_medicare_alone,int
+66,225,S2704_C02_027M,Margin of Error. Public Coverage. COVERAGE ALONE. Public health insurance alone. Medicare coverage alone,moe_pub_cov_pub_cov_alone_medicare_alone,int
+67,227,S2704_C02_028E,Estimate. Public Coverage. COVERAGE ALONE. Public health insurance alone. Medicaid/means tested coverage alone,pub_cov_pub_cov_alone_medicaid_alone,int
+68,229,S2704_C02_028M,Margin of Error. Public Coverage. COVERAGE ALONE. Public health insurance alone. Medicaid/means tested coverage alone,moe_pub_cov_pub_cov_alone_medicaid_alone,int
+69,231,S2704_C02_029E,Estimate. Public Coverage. COVERAGE ALONE. Public health insurance alone. VA health care coverage alone,pub_cov_pub_cov_alone_va_alone,int
+70,233,S2704_C02_029M,Margin of Error. Public Coverage. COVERAGE ALONE. Public health insurance alone. VA health care coverage alone,moe_pub_cov_pub_cov_alone_va_alone,int
+71,235,S2704_C03_001E,Estimate. Percent Public Coverage. Civilian noninstitutionalized population,pct_pub_cov_pop,float
+72,237,S2704_C03_001M,Margin of Error. Percent Public Coverage. Civilian noninstitutionalized population,moe_pct_pub_cov,float
+73,239,S2704_C03_002E,Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination,pct_pub_cov_medicare_alone_or_comb,float
+74,241,S2704_C03_002M,Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination,moe_pct_pub_cov_medicare_alone_or_comb,float
+75,243,S2704_C03_003E,Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. Under 19,pct_pub_cov_medicare_alone_or_comb_u19,float
+76,245,S2704_C03_003M,Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. Under 19,moe_pct_pub_cov_medicare_alone_or_comb_u19,float
+77,247,S2704_C03_004E,Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 19 to 64 years,pct_pub_cov_medicare_alone_or_comb_19_64,float
+78,249,S2704_C03_004M,Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 19 to 64 years,moe_pct_pub_cov_medicare_alone_or_comb_19_64,float
+79,251,S2704_C03_005E,Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 65 years and over,pct_pub_cov_medicare_alone_or_comb_65plus,float
+80,253,S2704_C03_005M,Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 65 years and over,moe_pct_pub_cov_medicare_alone_or_comb_65plus,float
+81,255,S2704_C03_006E,Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination,pct_pub_cov_medicaid_alone_or_comb,float
+82,257,S2704_C03_006M,Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination,moe_pct_pub_cov_medicaid_alone_or_comb,float
+83,259,S2704_C03_007E,Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. Under 19,pct_pub_cov_medicaid_alone_or_comb_u19,float
+84,261,S2704_C03_007M,Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. Under 19,moe_pct_pub_cov_medicaid_alone_or_comb_u19,float
+85,263,S2704_C03_008E,Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 19 to 64 years,pct_pub_cov_medicaid_alone_or_comb_19_64,float
+86,265,S2704_C03_008M,Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 19 to 64 years,moe_pct_pub_cov_medicaid_alone_or_comb_19_64,float
+87,267,S2704_C03_009E,Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 65 years and over,pct_pub_cov_medicaid_alone_or_comb_65plus,float
+88,269,S2704_C03_009M,Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 65 years and over,moe_pct_pub_cov_medicaid_alone_or_comb_65plus,float
+89,271,S2704_C03_010E,Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination,pct_pub_cov_va_alone_or_comb,float
+90,273,S2704_C03_010M,Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination,moe_pct_pub_cov_va_alone_or_comb,float
+91,275,S2704_C03_011E,Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. Under 19,pct_pub_cov_va_alone_or_comb_u19,float
+92,277,S2704_C03_011M,Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. Under 19,moe_pct_pub_cov_va_alone_or_comb_u19,float
+93,279,S2704_C03_012E,Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 19 to 64 years,pct_pub_cov_va_alone_or_comb_19_64,float
+94,281,S2704_C03_012M,Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 19 to 64 years,moe_pct_pub_cov_va_alone_or_comb_19_64,float
+95,283,S2704_C03_013E,Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 65 years and over,pct_pub_cov_va_alone_or_comb_65plus,float
+96,285,S2704_C03_013M,Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 65 years and over,moe_pct_pub_cov_va_alone_or_comb_65plus,float
+97,335,S2704_C03_026E,Estimate. Percent Public Coverage. COVERAGE ALONE. Public health insurance alone,pct_pub_cov_pub_cov_alone,float
+98,337,S2704_C03_026M,Margin of Error. Percent Public Coverage. COVERAGE ALONE. Public health insurance alone,moe_pct_pub_cov_pub_cov_alone,float
+99,339,S2704_C03_027E,Estimate. Percent Public Coverage. COVERAGE ALONE. Public health insurance alone. Medicare coverage alone,pct_pub_cov_pub_cov_alone_medicare_alone,float
+100,341,S2704_C03_027M,Margin of Error. Percent Public Coverage. COVERAGE ALONE. Public health insurance alone. Medicare coverage alone,moe_pct_pub_cov_pub_cov_alone_medicare_alone,float
+101,343,S2704_C03_028E,Estimate. Percent Public Coverage. COVERAGE ALONE. Public health insurance alone. Medicaid/means tested coverage alone,pct_pub_cov_pub_cov_alone_medicaid_alone,float
+102,345,S2704_C03_028M,Margin of Error. Percent Public Coverage. COVERAGE ALONE. Public health insurance alone. Medicaid/means tested coverage alone,moe_pct_pub_cov_pub_cov_alone_medicaid_alone,float
+103,347,S2704_C03_029E,Estimate. Percent Public Coverage. COVERAGE ALONE. Public health insurance alone. VA health care coverage alone,pct_pub_cov_pub_cov_alone_va_alone,float
+104,349,S2704_C03_029M,Margin of Error. Percent Public Coverage. COVERAGE ALONE. Public health insurance alone. VA health care coverage alone,moe_pct_pub_cov_pub_cov_alone_va_alone,float
