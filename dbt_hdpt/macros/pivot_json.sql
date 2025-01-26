@@ -1,7 +1,7 @@
 {% macro pivot_json(source_schema, source_table, seed_name) %}
 
 {%- set seed_ref = seed_name -%}
-{%- set cols = dbt_utils.get_column_values(table=seed_ref, column='column_name', order_by='min(index)') -%}
+{%- set cols = dbt_utils.get_column_values(table=seed_ref, column='raw_column_name', order_by='min(raw_index)') -%}
 
 WITH records AS ( --Unnest each row (array) into individual elements
     SELECT 

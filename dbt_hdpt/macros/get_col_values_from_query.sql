@@ -1,4 +1,4 @@
-{% macro get_col_values_from_query(table, column, order_by='index') %}
+{% macro get_col_values_from_query(table, column, order_by='stage_index') %}
     {%- set sql_statement %}
         SELECT {{ column }} FROM {{ table }} ORDER BY {{ order_by }}
     {%- endset %}

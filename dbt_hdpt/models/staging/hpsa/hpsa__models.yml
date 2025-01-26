@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: components_shapefile
+  - name: stg_hpsa__components_shapefile
     description: "Select attributes from the Spatial data file for Primary Care Geographic and Population HPSAs."
     # data_tests:
     #   - json_row_count:

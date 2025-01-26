@@ -1,12 +1,30 @@
 version: 2
 
 seeds:
-  - name: seed_census_bureau__dp04_metadata
+  - name: seed_census_bureau__dp04__data_catalog
     config:
       enabled: true
-  - name: seed_census_bureau__s2704_metadata
+  - name: seed_census_bureau__s2704__data_catalog
     config:
       enabled: true
-  - name: seed_hpsa__components_shapefile__data_catalog
+  - name: seed_gtfs__calendar_date__data_catalog
+    config:
+      enabled: true
+  - name: seed_gtfs__routes__data_catalog
+    config:
+      enabled: true
+  - name: seed_gtfs__shapes__data_catalog
+    config:
+      enabled: true
+  - name: seed_gtfs__stops__data_catalog
+    config:
+      enabled: true
+  - name: seed_gtfs__stop_times__data_catalog
+    config:
+      enabled: true
+  - name: seed_gtfs__trips__data_catalog
+    config:
+      enabled: true
+  - name: seed_hrsa__components_shapefile__data_catalog
     config:
       enabled: true

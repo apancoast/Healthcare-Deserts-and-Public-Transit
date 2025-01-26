@@ -1,14 +1,14 @@
 # Mobility Data
 ## Overview
-**Purpose**: 
+**Purpose**:
 
 ## Source Dataset
 ### Source Details
-- **Source Name**: `The Mobility Database. https://mobilitydatabase.org/about. All metadata at https://gtfs.org/documentation/schedule/reference.`
-- **Accessed Via**: `API`
-- **Accessed From**: `https://api.mobilitydatabase.org/v1/gtfs_feeds/mdb-2265`  
-- **Accessed Date**: `2024-12-14`   
-- **Storage Location**: `Unzipped to s3://hdpt/raw/gtfs/`
+- **Source Name**: The Mobility Database. https://mobilitydatabase.org/about. All metadata at https://gtfs.org/documentation/schedule/reference.
+- **Accessed Via**: API
+- **Accessed From**: https://api.mobilitydatabase.org/v1/gtfs_feeds/mdb-2265  
+- **Accessed Date**: 2024-12-14   
+- **Storage Location**: Unzipped to s3://hdpt/raw/gtfs/
 - **File Name(s)/Format(s)**:
     - calendar_dates.txt
     - routes.txt
@@ -17,20 +17,18 @@
     - stops.txt
     - trips.txt
 
----
-
 ## Data Schema         <!-- I believe this is in the yml, but maybe I want to use this source as docs source? -->
 ### Table Name
-`stg_census_bureau__public_insurance`
+stg_census_bureau__public_insurance
 
 ### Columns
 | Column Name       | Data Type  | Description                        |
 |-------------------|------------|------------------------------------|
-| `<column_name>`   | `<type>`   | Brief description of the column.  |
-| `<column_name>`   | `<type>`   | Brief description of the column.  |
+| <column_name>   | <type>   | test |
+| <column_name>   | <type>   | Brief description of the column.  |
 
 _Instructions_:  
-- Replace `<column_name>` with the actual column name.  
+- Replace <column_name> with the actual column name.  
 - Use clear, concise descriptions that highlight the purpose of each column.  
 - Include primary keys, unique constraints, or other metadata where applicable.
 
@@ -71,13 +69,13 @@ _Example_:
 | Date       | Change Description                             | Changed By    |
 |------------|-----------------------------------------------|---------------|
 | YYYY-MM-DD | Initial table creation                        | Your Name     |
-| YYYY-MM-DD | Added new column `median_income`              | Your Name     |
+| YYYY-MM-DD | Added new column median_income              | Your Name     |
 | YYYY-MM-DD | Updated data validation to include row checks | Your Name     |
 
 ---
 
 **Instructions for Use**:  
-1. Replace placeholders (e.g., `<...>`) with actual information.  
+1. Replace placeholders (e.g., <...>) with actual information.  
 2. Maintain consistent formatting for all staging table documentation.  
 3. Link this document to dbt models or project management tools as needed.
 
@@ -89,12 +87,12 @@ _Example_:
 
 ## Source Dataset
 ### Source Details
-- **Source Name**: `U.S. Census Bureau, 2019-2023 American Community Survey 5-Year Estimates`
-- **Source Table**: `DP04: Selected Housing Characteristics`  
-- **Accessed From**: `https://api.census.gov/data/2023/acs/acs5/profile?get=group(DP04)&ucgid=pseudo(0500000US37119$1400000)`
-- **Access Date**: `2024-12-14`   
-- **Storage Location**: `s3://hdpt/raw/census_bureau/`
-- **File Name/Format**: `dp04.json`   
+- **Source Name**: U.S. Census Bureau, 2019-2023 American Community Survey 5-Year Estimates
+- **Source Table**: DP04: Selected Housing Characteristics  
+- **Accessed From**: https://api.census.gov/data/2023/acs/acs5/profile?get=group(DP04)&ucgid=pseudo(0500000US37119$1400000)
+- **Access Date**: 2024-12-14   
+- **Storage Location**: s3://hdpt/raw/census_bureau/
+- **File Name/Format**: dp04.json   
 ---
 ## Data Schema
 ### Transformation Context

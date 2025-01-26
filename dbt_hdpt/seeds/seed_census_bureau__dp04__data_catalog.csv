@@ -1,4 +1,3 @@
-,,,,,
 stage_index,raw_index,raw_column_name,description,stage_column_name,data_type
 1,1145,GEO_ID,Geography,geo_id,string
 2,1146,NAME,Geographic area name,geo_name,string

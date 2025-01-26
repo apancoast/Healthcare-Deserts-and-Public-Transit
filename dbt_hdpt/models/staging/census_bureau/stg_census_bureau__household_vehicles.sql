@@ -1,7 +1,7 @@
-{%- set seed_ref = ref('seed_census_bureau__dp04_metadata') %}
+{%- set seed_ref = ref('seed_census_bureau__dp04__data_catalog') %}
 
-{%- set cols = dbt_utils.get_column_values(table=seed_ref, column='column_name', order_by='min(index)') %}
-{%- set as_cols = dbt_utils.get_column_values(table=seed_ref, column='new_label', order_by='min(index)') %}
+{%- set cols = dbt_utils.get_column_values(table=seed_ref, column='raw_column_name', order_by='min(stage_index)') %}
+{%- set as_cols = dbt_utils.get_column_values(table=seed_ref, column='stage_column_name', order_by='min(stage_index)') %}
 {%- set data_types = get_col_values_from_query(table=seed_ref, column='data_type') %}
 
 with pivoted_data as (
