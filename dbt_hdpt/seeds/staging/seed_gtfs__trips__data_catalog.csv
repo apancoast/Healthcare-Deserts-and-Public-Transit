@@ -1,4 +1,4 @@
-raw_column_name,constraints,presence,description
+stage_column_name,constraints,presence,description
 route_id,Foreign ID referencing routes.route_id,Required,Identifies a route.
 service_id,Foreign ID referencing calendar.service_id or calendar_dates.service_id,Required,Identifies a set of dates when service is available for one or more routes.
 trip_id,Unique ID,Required,Identifies a trip.

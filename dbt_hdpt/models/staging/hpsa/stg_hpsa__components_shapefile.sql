@@ -1,7 +1,7 @@
 {%- set seed_ref = ref('seed_hpsa__components_shapefile__data_catalog') %}
 
-{%- set cols = dbt_utils.get_column_values(table=seed_ref, column='column_name', order_by='min(index)') %}
-{%- set as_cols = dbt_utils.get_column_values(table=seed_ref, column='new_column_name', order_by='min(index)') %}
+{%- set cols = dbt_utils.get_column_values(table=seed_ref, column='raw_column_name', order_by='min(stage_index)') %}
+{%- set as_cols = dbt_utils.get_column_values(table=seed_ref, column='stage_column_name', order_by='min(stage_index)') %}
 {% do run_query("LOAD spatial;") %}
 
 with source as (

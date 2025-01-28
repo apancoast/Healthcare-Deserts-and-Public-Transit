@@ -1,4 +1,4 @@
-raw_column_name,constraints,presence,description
+stage_column_name,constraints,presence,description
 shape_id,ID,Required,Identifies a shape.
 shape_pt_lat,Latitude,Required,Latitude of a shape point. Each record in shapes.txt represents a shape point used to define the shape.
 shape_pt_lon,Longitude,Required,Longitude of a shape point.

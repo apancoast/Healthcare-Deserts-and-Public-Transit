@@ -3,10 +3,11 @@ version: 2
 
 sources:
   - name: census_bureau
+    description: '{{ doc("stg_census_bureau") }}'
     meta:
       external_location: "s3://hdpt/raw/census_bureau/{name}.json" 
     tables:
       - name: s2704
-        description: "All variables in ACS's S2704 group, Public Health Insurance Coverage by Type and Select Characteristics, for Mecklenburg County at the Census Block level."
+        description: '{{ doc("source_census_bureau__s2704") }}'
       - name: dp04
-        description: "All variables in ACS's DP04 group, Select Housing Characteristics, for Mecklenburg County at the Census Block level."
+        description: '{{ doc("source_census_bureau__dp04") }}'

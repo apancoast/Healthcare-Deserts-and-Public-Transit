@@ -1,113 +1,314 @@
 version: 2
-
 models:
-  - name: stg_census_bureau__public_insurance
-    description: "Attributes selected for this project from the Census Bureau source S2704 for all Census Blocks in Mecklenburg County. Contains estimated totals and percentages of types of public healthcare coverage by age brackets."
-    data_tests:
-      - json_row_count:
-          source_name: census_bureau
-          table_name: s2704
-    columns:
-      - name: geo_id
-        type: primary_key
-        description: "The primary key for this table"
-        data_tests:
-          - unique
-          - not_null
-
   - name: stg_census_bureau__household_vehicles
-    description: "Attributes selected for this project from the Census Bureau source DP04 for all Census Blocks in Mecklenburg County. Contains estimated totals and percentages of housing tenure, household size, and count of vehicles available to household."
-    data_tests:
-      - json_row_count:
-          source_name: census_bureau
-          table_name: dp04
+    description: '{{ doc("model__household_vehicles") }}''
     columns:
       - name: geo_id
         type: primary_key
-        description: "The primary key for this table"
         data_tests:
           - not_null
           - unique
-        data_type: varchar
+          - relationships:
+              to: ref('stg_census_bureau__public_insurance')
+              field: geo_id
+        description: Geography
       - name: geo_name
-        data_type: varchar
+        description: Geographic area name
       - name: housing_tenure
-        data_type: integer
+        description: Estimate. Housing tenure. Occupied housing units
       - name: moe_housing_tenure
-        data_type: integer
+        description: Margin of error. Housing tenure. Occupied housing units
       - name: pct_housing_tenure
-        data_type: integer
+        description: Percent. Housing tenure. Occupied housing units
       - name: pct_moe_housing_tenure
-        data_type: integer
+        description: Percent margin of error. Housing tenure. Occupied housing units
       - name: housing_tenure_owner_occ
-        data_type: integer
+        description: Estimate. Housing tenure. Occupied housing units. Owner-occupied
       - name: moe_housing_tenure_owner_occ
-        data_type: integer
+        description: Margin of error. Housing tenure. Occupied housing units. Owner-occupied
       - name: pct_housing_tenure_owner_occ
-        data_type: float
+        description: Percent. Housing tenure. Occupied housing units. Owner-occupied
       - name: pct_moe_housing_tenure_owner_occ
-        data_type: float
+        description: Percent margin of error. Housing tenure. Occupied housing units. Owner-occupied
       - name: housing_tenure_renter_occ
-        data_type: integer
+        description: Estimate. Housing tenure. Occupied housing units. Renter-occupied
       - name: moe_housing_tenure_renter_occ
-        data_type: integer
+        description: Margin of error. Housing tenure. Occupied housing units. Renter-occupied
       - name: pct_housing_tenure_renter_occ
-        data_type: float
+        description: Percent. Housing tenure. Occupied housing units. Renter-occupied
       - name: pct_moe_housing_tenure_renter_occ
-        data_type: float
+        description: Percent margin of error. Housing tenure. Occupied housing units. Renter-occupied
       - name: housing_tenure_avg_hh_size_owner
-        data_type: float
+        description: Estimate. Housing tenure. Occupied housing units. Average household size of owner-occupied unit
       - name: moe_housing_tenure_avg_hh_size_owner
-        data_type: float
+        description: Margin of error. Housing tenure. Occupied housing units. Average household size of owner-occupied unit
       - name: pct_housing_tenure_avg_hh_size_owner
-        data_type: integer
+        description: Percent. Housing tenure. Occupied housing units. Average household size of owner-occupied unit
       - name: pct_moe_housing_tenure_avg_hh_size_owner
-        data_type: integer
+        description: Percent margin of error. Housing tenure. Occupied housing units. Average household size of owner-occupied unit
       - name: housing_tenure_avg_hh_size_renter
-        data_type: float
+        description: Estimate. Housing tenure. Occupied housing units. Average household size of renter-occupied unit
       - name: moe_housing_tenure_avg_hh_size_renter
-        data_type: float
+        description: Margin of error. Housing tenure. Occupied housing units. Average household size of renter-occupied unit
       - name: pct_housing_tenure_avg_hh_size_renter
-        data_type: integer
+        description: Percent. Housing tenure. Occupied housing units. Average household size of renter-occupied unit
       - name: pct_moe_housing_tenure_avg_hh_size_renter
-        data_type: integer
+        description: Percent margin of error. Housing tenure. Occupied housing units. Average household size of renter-occupied unit
       - name: veh_avail
-        data_type: integer
+        description: Estimate. Vehicles available. Occupied housing units
       - name: moe_veh_avail
-        data_type: integer
+        description: Margin of error. Vehicles available. Occupied housing units
       - name: pct_veh_avail
-        data_type: integer
+        description: Percent. Vehicles available. Occupied housing units
       - name: pct_moe_veh_avail
-        data_type: integer
+        description: Percent margin of error. Vehicles available. Occupied housing units
       - name: veh_avail_veh_none
-        data_type: integer
+        description: Estimate. Vehicles available. Occupied housing units. No vehicles available
       - name: moe_veh_avail_veh_none
-        data_type: integer
+        description: Margin of error. Vehicles available. Occupied housing units. No vehicles available
       - name: pct_veh_avail_veh_none
-        data_type: float
+        description: Percent. Vehicles available. Occupied housing units. No vehicles available
       - name: pct_moe_veh_avail_veh_none
-        data_type: float
+        description: Percent margin of error. Vehicles available. Occupied housing units. No vehicles available
       - name: veh_avail_veh_1
-        data_type: integer
+        description: Estimate. Vehicles available. Occupied housing units. 1 vehicle available
       - name: moe_veh_avail_veh_1
-        data_type: integer
+        description: Margin of error. Vehicles available. Occupied housing units. 1 vehicle available
       - name: pct_veh_avail_veh_1
-        data_type: float
+        description: Percent. Vehicles available. Occupied housing units. 1 vehicle available
       - name: pct_moe_veh_avail_veh_1
-        data_type: float
+        description: Percent margin of error. Vehicles available. Occupied housing units. 1 vehicle available
       - name: veh_avail_veh_2
-        data_type: integer
+        description: Estimate. Vehicles available. Occupied housing units. 2 vehicles available
       - name: moe_veh_avail_veh_2
-        data_type: integer
+        description: Margin of error. Vehicles available. Occupied housing units. 2 vehicles available
       - name: pct_veh_avail_veh_2
-        data_type: float
+        description: Percent. Vehicles available. Occupied housing units. 2 vehicles available
       - name: pct_moe_veh_avail_veh_2
-        data_type: float
+        description: Percent margin of error. Vehicles available. Occupied housing units. 2 vehicles available
       - name: veh_avail_veh_3plus
-        data_type: integer
+        description: Estimate. Vehicles available. Occupied housing units. 3 or more vehicles available
       - name: moe_veh_avail_veh_3plus
-        data_type: integer
+        description: Margin of error. Vehicles available. Occupied housing units. 3 or more vehicles available
       - name: pct_veh_avail_veh_3plus
-        data_type: float
+        description: Percent. Vehicles available. Occupied housing units. 3 or more vehicles available
       - name: pct_moe_veh_avail_veh_3plus
-        data_type: float
+        description: Percent margin of error. Vehicles available. Occupied housing units. 3 or more vehicles available
+  - name: stg_census_bureau__public_insurance
+    description: '{{ doc("model__public_insurance") }}'
+    columns:
+      - name: geo_id
+        type: primary_key
+        data_tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('stg_census_bureau__household_vehicles')
+              field: geo_id
+        description: Geography
+      - name: geo_name
+        description: Geographic area name
+      - name: tot_pop
+        description: Estimate. Total. Civilian noninstitutionalized population
+      - name: moe_tot_pop
+        description: Margin of Error. Total. Civilian noninstitutionalized population
+      - name: tot_medicare_alone_or_comb
+        description: Estimate. Total. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination
+      - name: moe_tot_medicare_alone_or_comb
+        description: Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination
+      - name: tot_medicare_alone_or_comb_u19
+        description: Estimate. Total. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. Under 19
+      - name: moe_tot_medicare_alone_or_comb_u19
+        description: Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. Under 19
+      - name: tot_medicare_alone_or_comb_19_64
+        description: Estimate. Total. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 19 to 64 years
+      - name: moe_tot_medicare_alone_or_comb_19_64
+        description: Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 19 to 64 years
+      - name: tot_medicare_alone_or_comb_65plus
+        description: Estimate. Total. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 65 years and over
+      - name: moe_tot_medicare_alone_or_comb_65plus
+        description: Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 65 years and over
+      - name: tot_medicaid_alone_or_comb
+        description: Estimate. Total. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination
+      - name: moe_tot_medicaid_alone_or_comb
+        description: Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination
+      - name: tot_medicaid_alone_or_comb_u19
+        description: Estimate. Total. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. Under 19
+      - name: moe_tot_medicaid_alone_or_comb_u19
+        description: Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. Under 19
+      - name: tot_medicaid_alone_or_comb_19_64
+        description: Estimate. Total. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 19 to 64 years
+      - name: moe_tot_medicaid_alone_or_comb_19_64
+        description: Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 19 to 64 years
+      - name: tot_medicaid_alone_or_comb_65plus
+        description: Estimate. Total. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 65 years and over
+      - name: moe_tot_medicaid_alone_or_comb_65plus
+        description: Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 65 years and over
+      - name: tot_va_alone_or_comb
+        description: Estimate. Total. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination
+      - name: moe_tot_va_alone_or_comb
+        description: Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination
+      - name: tot_va_alone_or_comb_u19
+        description: Estimate. Total. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. Under 19
+      - name: moe_tot_va_alone_or_comb_u19
+        description: Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. Under 19
+      - name: tot_va_alone_or_comb_19_64
+        description: Estimate. Total. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 19 to 64 years
+      - name: moe_tot_va_alone_or_comb_19_64
+        description: Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 19 to 64 years
+      - name: tot_va_alone_or_comb_65plus
+        description: Estimate. Total. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 65 years and over
+      - name: moe_tot_va_alone_or_comb_65plus
+        description: Margin of Error. Total. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 65 years and over
+      - name: tot_pub_cov_alone
+        description: Estimate. Total. COVERAGE ALONE. Public health insurance alone
+      - name: moe_tot_pub_cov_alone
+        description: Margin of Error. Total. COVERAGE ALONE. Public health insurance alone
+      - name: tot_pub_cov_alone_medicare_alone
+        description: Estimate. Total. COVERAGE ALONE. Public health insurance alone. Medicare coverage alone
+      - name: moe_tot_pub_cov_alone_medicare_alone
+        description: Margin of Error. Total. COVERAGE ALONE. Public health insurance alone. Medicare coverage alone
+      - name: tot_pub_cov_alone_medicaid_alone
+        description: Estimate. Total. COVERAGE ALONE. Public health insurance alone. Medicaid/means tested coverage alone
+      - name: moe_tot_pub_cov_alone_medicaid_alone
+        description: Margin of Error. Total. COVERAGE ALONE. Public health insurance alone. Medicaid/means tested coverage alone
+      - name: tot_pub_cov_alone_va_alone
+        description: Estimate. Total. COVERAGE ALONE. Public health insurance alone. VA health care coverage alone
+      - name: moe_tot_pub_cov_alone_va_alone
+        description: Margin of Error. Total. COVERAGE ALONE. Public health insurance alone. VA health care coverage alone
+      - name: pub_cov_pop
+        description: Estimate. Public Coverage. Civilian noninstitutionalized population
+      - name: moe_pub_cov_pop
+        description: Margin of Error. Public Coverage. Civilian noninstitutionalized population
+      - name: pub_cov_medicare_alone_or_comb
+        description: Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination
+      - name: moe_pub_cov_medicare_alone_or_comb
+        description: Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination
+      - name: pub_cov_medicare_alone_or_comb_u19
+        description: Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. Under 19
+      - name: moe_pub_cov_medicare_alone_or_comb_u19
+        description: Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. Under 19
+      - name: pub_cov_medicare_alone_or_comb_19_64
+        description: Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 19 to 64 years
+      - name: moe_pub_cov_medicare_alone_or_comb_19_64
+        description: Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 19 to 64 years
+      - name: pub_cov_medicare_alone_or_comb_65plus
+        description: Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 65 years and over
+      - name: moe_pub_cov_medicare_alone_or_comb_65plus
+        description: Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 65 years and over
+      - name: pub_cov_medicaid_alone_or_comb
+        description: Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination
+      - name: moe_pub_cov_medicaid_alone_or_comb
+        description: Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination
+      - name: pub_cov_medicaid_alone_or_comb_u19
+        description: Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. Under 19
+      - name: moe_pub_cov_medicaid_alone_or_comb_u19
+        description: Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. Under 19
+      - name: pub_cov_medicaid_alone_or_comb_19_64
+        description: Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 19 to 64 years
+      - name: moe_pub_cov_medicaid_alone_or_comb_19_64
+        description: Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 19 to 64 years
+      - name: pub_cov_medicaid_alone_or_comb_65plus
+        description: Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 65 years and over
+      - name: moe_pub_cov_medicaid_alone_or_comb_65plus
+        description: Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 65 years and over
+      - name: pub_cov_va_alone_or_comb
+        description: Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination
+      - name: moe_pub_cov_va_alone_or_comb
+        description: Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination
+      - name: pub_cov_va_alone_or_comb_u19
+        description: Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. Under 19
+      - name: moe_pub_cov_va_alone_or_comb_u19
+        description: Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. Under 19
+      - name: pub_cov_va_alone_or_comb_19_64
+        description: Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 19 to 64 years
+      - name: moe_pub_cov_va_alone_or_comb_19_64
+        description: Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 19 to 64 years
+      - name: pub_cov_va_alone_or_comb_65plus
+        description: Estimate. Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 65 years and over
+      - name: moe_pub_cov_va_alone_or_comb_65plus
+        description: Margin of Error. Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 65 years and over
+      - name: pub_cov_pub_cov_alone
+        description: Estimate. Public Coverage. COVERAGE ALONE. Public health insurance alone
+      - name: moe_pub_cov_pub_cov_alone
+        description: Margin of Error. Public Coverage. COVERAGE ALONE. Public health insurance alone
+      - name: pub_cov_pub_cov_alone_medicare_alone
+        description: Estimate. Public Coverage. COVERAGE ALONE. Public health insurance alone. Medicare coverage alone
+      - name: moe_pub_cov_pub_cov_alone_medicare_alone
+        description: Margin of Error. Public Coverage. COVERAGE ALONE. Public health insurance alone. Medicare coverage alone
+      - name: pub_cov_pub_cov_alone_medicaid_alone
+        description: Estimate. Public Coverage. COVERAGE ALONE. Public health insurance alone. Medicaid/means tested coverage alone
+      - name: moe_pub_cov_pub_cov_alone_medicaid_alone
+        description: Margin of Error. Public Coverage. COVERAGE ALONE. Public health insurance alone. Medicaid/means tested coverage alone
+      - name: pub_cov_pub_cov_alone_va_alone
+        description: Estimate. Public Coverage. COVERAGE ALONE. Public health insurance alone. VA health care coverage alone
+      - name: moe_pub_cov_pub_cov_alone_va_alone
+        description: Margin of Error. Public Coverage. COVERAGE ALONE. Public health insurance alone. VA health care coverage alone
+      - name: pct_pub_cov_pop
+        description: Estimate. Percent Public Coverage. Civilian noninstitutionalized population
+      - name: moe_pct_pub_cov
+        description: Margin of Error. Percent Public Coverage. Civilian noninstitutionalized population
+      - name: pct_pub_cov_medicare_alone_or_comb
+        description: Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination
+      - name: moe_pct_pub_cov_medicare_alone_or_comb
+        description: Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination
+      - name: pct_pub_cov_medicare_alone_or_comb_u19
+        description: Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. Under 19
+      - name: moe_pct_pub_cov_medicare_alone_or_comb_u19
+        description: Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. Under 19
+      - name: pct_pub_cov_medicare_alone_or_comb_19_64
+        description: Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 19 to 64 years
+      - name: moe_pct_pub_cov_medicare_alone_or_comb_19_64
+        description: Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 19 to 64 years
+      - name: pct_pub_cov_medicare_alone_or_comb_65plus
+        description: Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 65 years and over
+      - name: moe_pct_pub_cov_medicare_alone_or_comb_65plus
+        description: Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination. 65 years and over
+      - name: pct_pub_cov_medicaid_alone_or_comb
+        description: Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination
+      - name: moe_pct_pub_cov_medicaid_alone_or_comb
+        description: Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination
+      - name: pct_pub_cov_medicaid_alone_or_comb_u19
+        description: Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. Under 19
+      - name: moe_pct_pub_cov_medicaid_alone_or_comb_u19
+        description: Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. Under 19
+      - name: pct_pub_cov_medicaid_alone_or_comb_19_64
+        description: Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 19 to 64 years
+      - name: moe_pct_pub_cov_medicaid_alone_or_comb_19_64
+        description: Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 19 to 64 years
+      - name: pct_pub_cov_medicaid_alone_or_comb_65plus
+        description: Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 65 years and over
+      - name: moe_pct_pub_cov_medicaid_alone_or_comb_65plus
+        description: Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. Medicaid/means-tested public coverage alone or in combination. 65 years and over
+      - name: pct_pub_cov_va_alone_or_comb
+        description: Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination
+      - name: moe_pct_pub_cov_va_alone_or_comb
+        description: Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination
+      - name: pct_pub_cov_va_alone_or_comb_u19
+        description: Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. Under 19
+      - name: moe_pct_pub_cov_va_alone_or_comb_u19
+        description: Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. Under 19
+      - name: pct_pub_cov_va_alone_or_comb_19_64
+        description: Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 19 to 64 years
+      - name: moe_pct_pub_cov_va_alone_or_comb_19_64
+        description: Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 19 to 64 years
+      - name: pct_pub_cov_va_alone_or_comb_65plus
+        description: Estimate. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 65 years and over
+      - name: moe_pct_pub_cov_va_alone_or_comb_65plus
+        description: Margin of Error. Percent Public Coverage. COVERAGE ALONE OR IN COMBINATION. VA health care coverage alone or in combination. 65 years and over
+      - name: pct_pub_cov_pub_cov_alone
+        description: Estimate. Percent Public Coverage. COVERAGE ALONE. Public health insurance alone
+      - name: moe_pct_pub_cov_pub_cov_alone
+        description: Margin of Error. Percent Public Coverage. COVERAGE ALONE. Public health insurance alone
+      - name: pct_pub_cov_pub_cov_alone_medicare_alone
+        description: Estimate. Percent Public Coverage. COVERAGE ALONE. Public health insurance alone. Medicare coverage alone
+      - name: moe_pct_pub_cov_pub_cov_alone_medicare_alone
+        description: Margin of Error. Percent Public Coverage. COVERAGE ALONE. Public health insurance alone. Medicare coverage alone
+      - name: pct_pub_cov_pub_cov_alone_medicaid_alone
+        description: Estimate. Percent Public Coverage. COVERAGE ALONE. Public health insurance alone. Medicaid/means tested coverage alone
+      - name: moe_pct_pub_cov_pub_cov_alone_medicaid_alone
+        description: Margin of Error. Percent Public Coverage. COVERAGE ALONE. Public health insurance alone. Medicaid/means tested coverage alone
+      - name: pct_pub_cov_pub_cov_alone_va_alone
+        description: Estimate. Percent Public Coverage. COVERAGE ALONE. Public health insurance alone. VA health care coverage alone
+      - name: moe_pct_pub_cov_pub_cov_alone_va_alone
+        description: Margin of Error. Percent Public Coverage. COVERAGE ALONE. Public health insurance alone. VA health care coverage alone

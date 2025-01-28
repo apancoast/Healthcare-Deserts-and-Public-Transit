@@ -1,6 +1,6 @@
 stage_index,raw_index,raw_column_name,description,stage_column_name,data_type
 1,1,GEO_ID,Geography,geo_id,string
-2,2,NAME,Geographic Area Name,geo_name,string
+2,2,NAME,Geographic area name,geo_name,string
 3,3,S2704_C01_001E,Estimate. Total. Civilian noninstitutionalized population,tot_pop,int
 4,5,S2704_C01_001M,Margin of Error. Total. Civilian noninstitutionalized population,moe_tot_pop,int
 5,7,S2704_C01_002E,Estimate. Total. COVERAGE ALONE OR IN COMBINATION. Medicare coverage alone or in combination,tot_medicare_alone_or_comb,int
