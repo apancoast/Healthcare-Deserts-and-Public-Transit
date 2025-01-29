@@ -13,7 +13,7 @@
 3. Renamed columns.
 {% enddocs %}
 
-{% docs stg_census_bureau %}
+{% docs stg_source_census_bureau %}
 ## Notes and Known Issues
 **General Notes**: Include any observations or decisions made during the creation of this table.  
 - First pivot attempt used row_number() which is not ordered. Replaced with generate_subscript function when unnesting the array to maintain attribute order.
@@ -24,7 +24,7 @@
 
 {% docs source_census_bureau__s2704 %}
 ## Source Dataset
-- **Source Name**: U.S. Census Bureau, 2019-2023 American Community Survey 5-Year Estimates
+- **Publisher Name**: U.S. Census Bureau, 2019-2023 American Community Survey 5-Year Estimates
 - **Dataset Name**: S2704: Public Health Insurance Coverage by Type and Selected Characteristics
 - **Description**: All S2704 variable for Mecklenburg County at the Census Block level.  
 - **Accessed From**: `https://api.census.gov/data/2023/acs/acs5/subject?get=group(S2704)&ucgid=pseudo(0500000US37119$1400000)`  
@@ -47,8 +47,8 @@
 
 {% docs source_census_bureau__dp04 %}
 ## Source Dataset
-- **Source Name**: U.S. Census Bureau, 2019-2023 American Community Survey 5-Year Estimates
-- **Source Table**: DP04: Selected Housing Characteristics
+- **Publisher Name**: U.S. Census Bureau, 2019-2023 American Community Survey 5-Year Estimates
+- **Dataset Name**: DP04: Selected Housing Characteristics
 - **Description**: All DP04 variables for Mecklenburg County at the Census Block level. 
 - **Accessed From**: `https://api.census.gov/data/2023/acs/acs5/profile?get=group(DP04)&ucgid=pseudo(0500000US37119$1400000)`
 - **Access Date**: 2024-12-14
@@ -57,12 +57,13 @@
 {% enddocs %}
 
 # GTFS
-{% docs stg_gtfs %}
+{% docs stg_source_gtfs %}
 ## Source Dataset
-- **Source Name**: The Mobility Database. https://mobilitydatabase.org/about. All metadata at https://gtfs.org/documentation/schedule/reference.
+- **Publisher Name**: The Mobility Database. https://mobilitydatabase.org/about.
+- **Dataset Name**: GTFS Schedule MDB-2265. Charlotte Area Transit System (CATS).
 - **Description**: "The General Transit Feed Specification (GTFS) is an Open Standard used to distribute relevant information about transit systems to riders. It allows public transit agencies to publish their transit data in a format that can be consumed by a wide variety of software applications." -https://gtfs.org/documentation/overview/.
 
-Maintained by https://mobilitydata.org/.
+Maintained by https://mobilitydata.org/. Column and table data catalog desciptions from https://gtfs.org/documentation/schedule/reference.
 - **Accessed Via**: API
 - **Accessed From**: `https://api.mobilitydatabase.org/v1/gtfs_feeds/mdb-2265`
 - **Accessed Date**: 2024-12-14   
@@ -113,3 +114,38 @@ Maintained by https://mobilitydata.org/.
 
 # HPSA
 
+
+# CMS
+{% docs stg_source_cms %}
+- **Publisher Name**: Centers for Medicare & Medicaid Services (CMS)
+- **Dataset Name**: Doctors and Clinicians national downloadable file
+- **Description**: "The Doctors and Clinicians national downloadable file is organized such that each line is unique at the clinician/enrollment record/group/address level. Clinicians with multiple Medicare enrollment records and/or single enrollments linking to multiple practice locations are listed on multiple lines." -https://data.cms.gov/provider-data/dataset/mj5m-pzi6
+- **Accessed Via**: Direct download filtered for `State = NC`
+- **Accessed From**: `https://data.cms.gov/provider-data/dataset/mj5m-pzi6`
+- **Accessed Date**: 2025-01-28 
+- **Dataset's Last Release Date (as of access date)**: 2025-01-16
+- **Storage Location**: `s3://hdpt/raw/cms/`
+- **File Name(s)/Format(s)**: `doc.csv`
+{% enddocs %}
+
+
+# Standards
+
+## Naming Standards
+### Abbreivations
+{% docs table_example %}
+### test if this works in dbt docs 
+### Agg Table
+
+| COLUMN\_NAME                   | DESCRIPTION                                                                              |
+| ------------------------------ | ---------------------------------------------------------------------------------------- |
+| table_item_1                   | [first_model_description](#!/model/model.my_new_project.my_first_dbt_model#description)  |
+| table_item_2                   | [first_model_columns](#!/model/model.my_new_project.my_first_dbt_model#columns)          |
+| table_item_3                   | [table_item_doc](#!/docs/docs.my_new_project.table_item_3)                               |
+| table_item_4                   | [table_item_doc](#!/docs/docs.my_new_project.table_item_4#description)                   |
+                    
+
+{% enddocs %}
+
+### Column Naming
+- snake_case for all entities
