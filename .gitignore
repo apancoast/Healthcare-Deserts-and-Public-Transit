@@ -7,12 +7,10 @@ sources/
 /hdpt.code-workspace
 /.env
 logs/
-DuckDB/hdpt_dev.duckdb
 /sources
 /project.code-workspace
 duckdb/test_db.duckdb
 duckdb/hdpt_dev.duckdb.wal
-app.js
-DuckDB/
 /python
 .vscode/settings.json
+/DuckDB

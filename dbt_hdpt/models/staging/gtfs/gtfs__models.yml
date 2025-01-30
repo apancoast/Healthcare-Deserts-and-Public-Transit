@@ -1,6 +1,7 @@
 version: 2
 models:
   - name: stg_gtfs__calendar
+    description: '{{ doc("src_file__calendar_dates") }}'
     data_tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -19,6 +20,7 @@ models:
       - name: exception_type_desc
         description: A descriptive text of the exception_type.
   - name: stg_gtfs__routes
+    description: '{{ doc("src_file__routes") }}'
     columns:
       - name: route_id
         description: Identifies a route.
@@ -35,6 +37,7 @@ models:
       - name: route_type_desc
         description: A descriptive text of the route_type.
   - name: stg_gtfs__shapes
+    description: '{{ doc("src_file__shapes") }}'
     data_tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -58,6 +61,7 @@ models:
         description: 'Actual distance traveled along the shape from the first shape point to the point specified in this record. Used by trip planners to show the correct portion of the shape on a map. Values must increase along with shape_pt_sequence; they must not be used to show reverse travel along a route. Distance units must be consistent with those used in stop_times.txt.Recommended for routes that have looping or inlining (the vehicle crosses or travels over the same portion of alignment in one trip). If a vehicle retraces or crosses the route alignment at points in the course of a trip, shape_dist_traveled is important to clarify how portions of the points in shapes.txt line up correspond with records in stop_times.txt.Example: If a bus travels along the three points defined above for A_shp, the additional shape_dist_traveled values (shown here in kilometers) would look like this:  shape_id,shape_pt_lat,shape_pt_lon,shape_pt_sequence,shape_dist_traveledA_shp,37.61956,-122.48161,0,0A_shp,37.64430,-122.41070,6,6.8310  A_shp,37.65863,-122.30839,11,15.8765
           https://gtfs.org/assets/inlining.svg'
   - name: stg_gtfs__stops
+    description: '{{ doc("src_file__stops") }}'
     columns:
       - name: stop_id
         type: primary_key
@@ -85,6 +89,7 @@ models:
               field: stop_id
         description: 'Defines hierarchy between the different locations defined in stops.txt. It contains the ID of the parent location, as followed:- Stop/platform (location_type=0): the parent_station field contains the ID of a station.- Station (location_type=1): this field must be empty.- Entrance/exit (location_type=2) or generic node (location_type=3): the parent_station field contains the ID of a station (location_type=1)- Boarding Area (location_type=4): the parent_station field contains ID of a platform.Conditionally Required:- Required for locations which are entrances (location_type=2), generic nodes (location_type=3) or boarding areas (location_type=4).- Optional for stops/platforms (location_type=0).- Forbidden for stations (location_type=1).'
   - name: stg_gtfs__stop_times
+    description: '{{ doc("src_file__stop_times") }}'
     columns:
       - name: trip_id
         data_tests:
@@ -118,6 +123,7 @@ models:
       - name: timepoint
         description: Indicates if arrival and departure times for a stop are strictly adhered to by the vehicle or if they are instead approximate and/or interpolated times. This field allows a GTFS producer to provide interpolated stop-times, while indicating that the times are approximate. Valid options are:0 - Times are considered approximate. 1 - Times are considered exact.  All records of stop_times.txt with defined arrival or departure times should have timepoint values populated. If no timepoint values are provided, all times are considered exact.
   - name: stg_gtfs__trips
+    description: '{{ doc("src_file__trips") }}'
     columns:
       - name: route_id
         type: foreign_key

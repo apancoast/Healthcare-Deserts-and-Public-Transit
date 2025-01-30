@@ -14,7 +14,9 @@ model__NAME: description of a model
 # Public Insurance
 ## Overview
 **Purpose**: This table selects desired variables from the source that are relevant for downstream analysis. Contains estimated totals and percentages of types of public healthcare coverage by age brackets for Census Blocks in Mecklenburg County, North Carolina.
+
 ---
+
 ### Transformation Context
 **Initial Transformations**: Transformations applied to this model not immediately identifiable in the SQL.
 1. Parsed JSON arrays and pivoted to fit relational table format.
@@ -42,10 +44,13 @@ model__NAME: description of a model
 {% enddocs %}
 
 {% docs model__household_vehicles %}
+
 # Household Vehicles
 ## Overview
 **Purpose**: This table selects desired variables from the source that are relevant for downstream analysis. Contains estimated totals and percentages of housing tenure, household size, and count of vehicles available to household for Census Blocks in Mecklenburg County, North Carolina.
+
 ---
+
 ## Transformation Context
 **Initial Transformations**: Transformations applied to this model not immediately identifiable in the SQL.
 1. Parsed JSON arrays and pivoted to fit relational table format.
