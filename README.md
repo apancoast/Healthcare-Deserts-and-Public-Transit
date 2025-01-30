@@ -45,11 +45,11 @@ This project is being developed iteratively. While the foundational dbt models a
 	 - Data transformation
 	 - Documentation
 
-Key dbt features implemented:
+Key dbt features implemented: 
 	✅ Database connection via DuckDB  
 	✅ Staging models for raw data processing  
 	✅ Macros for reusable SQL logic  
-	✅ Testing through dbt built-in features and packages
+	✅ Testing through dbt built-in features and packages  
 	✅ Documentation through dbt
 
 ### Planned Final Outputs
