@@ -58,7 +58,7 @@ Key dbt features implemented:
 - **Full dbt Documentation**: Generated from dbt models, including lineage graphs and data dictionaries, with supplemental information for a holistic data governance.
 
 ## 📢 Contact & Updates
-Feel free to contact me via Github, follow my [LinkedIn](https://www.linkedin.com/in/pancoastashley/) for project updates and insights, or just keep refreshing this README like it’s your Instagram feed seconds after TikTok "left" the US.
+For project updates and insights star the repo, follow my [LinkedIn](https://www.linkedin.com/in/pancoastashley/), or just keep refreshing this README like it’s your Instagram feed seconds after TikTok "left" the US.
 
 ## ✍️ Contributions
 This project isn’t open for external contributions yet, but feel free to fork the repo for your own use. If you adapt it to another location, I’d love to hear about it!
