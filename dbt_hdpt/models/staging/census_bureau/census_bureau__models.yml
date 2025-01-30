@@ -1,7 +1,7 @@
 version: 2
 models:
   - name: stg_census_bureau__household_vehicles
-    description: '{{ doc("model__household_vehicles") }}''
+    description: '{{ doc("model__household_vehicles") }}'
     columns:
       - name: geo_id
         type: primary_key
