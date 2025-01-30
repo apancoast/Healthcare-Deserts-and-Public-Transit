@@ -3,19 +3,19 @@ version: 2
 
 sources:
   - name: gtfs
-    description: '{{ doc("stg_gtfs") }}'
+    description: '{{ doc("src__gtfs") }}'
     meta:
       external_location: s3://hdpt/raw/gtfs/{name}.txt
     tables:
       - name: calendar_dates
-        descrition: '{{ doc("source_calendar_dates") }}'
+        description: '{{ doc("src_file__calendar_dates") }}'
       - name: routes
-        description: '{{ doc("source_routes") }}'
+        description: '{{ doc("src_file__routes") }}'
       - name: shapes
-        description: '{{ doc("source_shapes") }}'
+        description: '{{ doc("src_file__shapes") }}'
       - name: stop_times
-        description: '{{ doc("source_stop_times") }}'
+        description: '{{ doc("src_file__stop_times") }}'
       - name: stops
-        description: '{{ doc("source_stops") }}'
+        description: '{{ doc("src_file__stops") }}'
       - name: trips
-        description: '{{ doc("source_trips") }}'
+        description: '{{ doc("src_file__trips") }}'

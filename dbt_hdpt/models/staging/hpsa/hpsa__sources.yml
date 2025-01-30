@@ -3,9 +3,8 @@ version: 2
 
 sources:
   - name: hpsa
-    description: "Area Health Professional Shortage Areas (HPSA) Component Boundaries for Primary Care shortage areas. Accessed from https://data.hrsa.gov/data/download on TODO."
     meta:
       external_location: /vsizip/vsis3/hdpt/raw/HPSA_CMPPC_SHP.zip/{name}.shp
     tables:
       - name: HPSA_CMPPC_SHP_DET_CUR_VX
-        description: "Spatial data file for Primary Care Geographic and Population HPSAs with one feature record for each designation component (county, county subdivision, or census tract) in Shapefile format."
+        description: '{{ doc("src_file__hpsa__HPSA_CMPPC_SHP_DET_CUR_VX") }}'

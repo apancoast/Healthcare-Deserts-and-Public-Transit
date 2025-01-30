@@ -1,13 +1,14 @@
 version: 2
 models:
   - name: stg_hpsa__components_shapefile
+    description: '{{ doc("model__hpsa__components_shapefile") }}'
     columns:
       - name: shape_object_id
         type: primary_key
         data_tests:
           - not_null
           - unique
-        description: "This attribute represents the table unique, internal feature (record) number as required by ArcGIS. There is no requirement or expectation that a given feature has a \u201Cpersistent\u201D Object Identification Number value from one table (feature class) to the next as long as the Object Identification Number value is unique in a given spatial table."
+        description: "This attribute represents the table unique, internal feature (record) number as required by ArcGIS. There is no requirement or expectation that a given feature has a persistent Object Identification Number value from one table (feature class) to the next as long as the Object Identification Number value is unique in a given spatial table."
       - name: hpsa_source_id
         description: This attribute represents the primary identifier for a Health Professional Shortage Area (HPSA) as a complete unit in the source data system.
       - name: hpsa_name

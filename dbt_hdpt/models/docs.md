@@ -1,4 +1,13 @@
-[ '{{ doc("") }}' ]: #
+[
+doc block reference syntax: '{{ doc("") }}'
+
+src__NAME: description of source
+
+src_file__NAME: description of source's table
+
+model__NAME: description of a model
+
+]: #
 
 # Census Bureau
 {% docs model__public_insurance %}
@@ -7,22 +16,21 @@
 **Purpose**: This table selects desired variables from the source that are relevant for downstream analysis. Contains estimated totals and percentages of types of public healthcare coverage by age brackets for Census Blocks in Mecklenburg County, North Carolina.
 ---
 ### Transformation Context
-**Initial Transformations**: Transformations applied to this model.
+**Initial Transformations**: Transformations applied to this model not immediately identifiable in the SQL.
 1. Parsed JSON arrays and pivoted to fit relational table format.
 2. Selected 104 attributes out of 350 based on relevance to analysis. Included dropping all "annotation" columns.
-3. Renamed columns.
 {% enddocs %}
 
-{% docs stg_source_census_bureau %}
+{% docs src__census_bureau %}
 ## Notes and Known Issues
-**General Notes**: Include any observations or decisions made during the creation of this table.  
+**General Notes**: Observations or decisions made during the ingestion of these sources.  
 - First pivot attempt used row_number() which is not ordered. Replaced with generate_subscript function when unnesting the array to maintain attribute order.
 
-**Known Issues**: List any limitations or unresolved issues.  
-- "Pivot macro assumes consistent JSON structure; updates may cause errors. Need to implement a better test to compare model back to source." 
+**Known Issues**: Limitations or unresolved issues.  
+- Pivot macro assumes consistent JSON structure; updates may cause errors. Need to implement a better test to compare model back to source. 
 {% enddocs %}
 
-{% docs source_census_bureau__s2704 %}
+{% docs src_file__census_bureau__s2704 %}
 ## Source Dataset
 - **Publisher Name**: U.S. Census Bureau, 2019-2023 American Community Survey 5-Year Estimates
 - **Dataset Name**: S2704: Public Health Insurance Coverage by Type and Selected Characteristics
@@ -39,13 +47,12 @@
 **Purpose**: This table selects desired variables from the source that are relevant for downstream analysis. Contains estimated totals and percentages of housing tenure, household size, and count of vehicles available to household for Census Blocks in Mecklenburg County, North Carolina.
 ---
 ## Transformation Context
-**Initial Transformations**: Transformations applied to raw data before staging.
+**Initial Transformations**: Transformations applied to this model not immediately identifiable in the SQL.
 1. Parsed JSON arrays and pivoted to fit relational table format.
 2. Selected 42 attributes out of 1,146 based on relevance to analysis. Included dropping all "annotation" columns.
-3. Renamed columns.
 {% enddocs %}
 
-{% docs source_census_bureau__dp04 %}
+{% docs src_file__census_bureau__dp04 %}
 ## Source Dataset
 - **Publisher Name**: U.S. Census Bureau, 2019-2023 American Community Survey 5-Year Estimates
 - **Dataset Name**: DP04: Selected Housing Characteristics
@@ -57,13 +64,13 @@
 {% enddocs %}
 
 # GTFS
-{% docs stg_source_gtfs %}
+{% docs src__gtfs %}
 ## Source Dataset
 - **Publisher Name**: The Mobility Database. https://mobilitydatabase.org/about.
 - **Dataset Name**: GTFS Schedule MDB-2265. Charlotte Area Transit System (CATS).
 - **Description**: "The General Transit Feed Specification (GTFS) is an Open Standard used to distribute relevant information about transit systems to riders. It allows public transit agencies to publish their transit data in a format that can be consumed by a wide variety of software applications." -https://gtfs.org/documentation/overview/.
 
-Maintained by https://mobilitydata.org/. Column and table data catalog desciptions from https://gtfs.org/documentation/schedule/reference.
+Maintained by https://mobilitydata.org/. Column and table data catalog descriptions from https://gtfs.org/documentation/schedule/reference.
 - **Accessed Via**: API
 - **Accessed From**: `https://api.mobilitydatabase.org/v1/gtfs_feeds/mdb-2265`
 - **Accessed Date**: 2024-12-14   
@@ -75,48 +82,65 @@ Maintained by https://mobilitydata.org/. Column and table data catalog desciptio
     - stop_times.txt
     - calendar_dates.txt
     - shapes.txt
+{% enddocs %}
 
-{% docs source_stops %}
+{% docs src_file__stops %}
 ### Stops
 **Description**: Stops where vehicles pick up or drop off riders. Also defines stations and station entrances. Conditionally Required: - Optional if demand-responsive zones are defined in locations.geojson. - Required otherwise.
 
 {% enddocs %}
 
-{% docs source_routes %}
+{% docs src_file__routes %}
 ### Routes
 **Description**: Transit routes. A route is a group of trips that are displayed to riders as a single service.
 
 {% enddocs %}
 
-{% docs source_trips %}
+{% docs src_file__trips %}
 ### Trips
 **Description**: Trips for each route. A trip is a sequence of two or more stops that occur during a specific time period.
 
 {% enddocs %}
 
-{% docs source_stop_times %}
+{% docs src_file__stop_times %}
 ### Stop Times
 **Description**: Times that a vehicle arrives at and departs from stops for each trip.
 
 {% enddocs %}
 
-{% docs source_calendar_dates %}
+{% docs src_file__calendar_dates %}
 ### Calendar Dates
 **Description**: Exceptions for the services defined in the calendar.txt. Conditionally Required: - Required if calendar.txt is omitted. In which case calendar_dates.txt must contain all dates of service.  - Optional otherwise.
 
 {% enddocs %}
 
-{% docs source_shapes %}
+{% docs src_file__shapes %}
 ### Shapes
 **Description**: Rules for mapping vehicle travel paths, sometimes referred to as route alignments.
 
 {% enddocs %}
 
 # HPSA
+{% docs src_file__hpsa__HPSA_CMPPC_SHP_DET_CUR_VX %}
+## Source Dataset
+- **Publisher Name**: Health Resources & Services Administration
+- **Dataset Name**: Area HPSA Component Boundaries – SHP for Health Professional Shortage Areas – Primary Care
+- **Description**: Spatial data file with selected details about Primary Care geographic areas and populations designated as Health Professional Shortage Areas (HPSA).
+- **Accessed From**: `https://data.hrsa.gov/data/download`. Direct link: `https://data.hrsa.gov//DataDownload/DD_Files/HPSA_CMPPC_SHP.zip`  
+- **Access Date**: 2025-01-10
+- **Storage Location**: `S3://hdpt/raw/HPSA_CMPPC_SHP.zip`
+- **Storage File Name/Format**: `/HPSA_CMPPC_SHP_DET_CUR_VX.shp`
+{% enddocs %}
+
+{% docs model__hpsa__components_shapefile %}
+# HPSA Components Shapefile
+## Overview
+**Purpose**: This table selects desired records from the source that are relevant for downstream analysis by filtering for records in Mecklenburg County, North Carolina. Contains one feature record for each designation component (county, county subdivision, or census tract) in Shapefile format.
+{% enddocs %}
 
 
 # CMS
-{% docs stg_source_cms %}
+{% docs src__cms %}
 - **Publisher Name**: Centers for Medicare & Medicaid Services (CMS)
 - **Dataset Name**: Doctors and Clinicians national downloadable file
 - **Description**: "The Doctors and Clinicians national downloadable file is organized such that each line is unique at the clinician/enrollment record/group/address level. Clinicians with multiple Medicare enrollment records and/or single enrollments linking to multiple practice locations are listed on multiple lines." -https://data.cms.gov/provider-data/dataset/mj5m-pzi6
