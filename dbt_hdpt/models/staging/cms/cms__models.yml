@@ -1,0 +1,14 @@
+version: 2
+models:
+  - name: stg_cms__clinicians_facilities
+    description: '{{ doc("model__cms__clinicians_facilities") }}'
+    # columns:
+      # - name: geo_id
+      #   type: primary_key
+        # data_tests:
+        #   - not_null
+        #   - unique
+        #   - relationships:
+        #       to: ref('stg_census_bureau__public_insurance')
+        #       field: geo_id
+        # description: Geography

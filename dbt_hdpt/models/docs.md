@@ -44,7 +44,6 @@ model__NAME: description of a model
 {% enddocs %}
 
 {% docs model__household_vehicles %}
-
 # Household Vehicles
 ## Overview
 **Purpose**: This table selects desired variables from the source that are relevant for downstream analysis. Contains estimated totals and percentages of housing tenure, household size, and count of vehicles available to household for Census Blocks in Mecklenburg County, North Carolina.
@@ -155,4 +154,16 @@ Maintained by https://mobilitydata.org/. Column and table data catalog descripti
 - **Dataset's Last Release Date (as of access date)**: 2025-01-16
 - **Storage Location**: `s3://hdpt/raw/cms/`
 - **File Name(s)/Format(s)**: `doc.csv`
+{% enddocs %}
+
+{% docs model__cms__clinicians_facilities %}
+# Clinicians and Facilities
+## Overview
+**Purpose**: This table selects desired variables from the source that are relevant for downstream analysis. Contains estimated totals and percentages of housing tenure, household size, and count of vehicles available to household for Census Blocks in Mecklenburg County, North Carolina.
+
+---
+
+## Transformation Context
+**Initial Transformations**: Transformations applied to this model not immediately identifiable in the SQL.
+
 {% enddocs %}
