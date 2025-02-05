@@ -28,3 +28,7 @@ seeds:
   - name: seed_hrsa__components_shapefile__data_catalog
     config:
       enabled: true
+  - name: seed_cms__clinicians_facilities__data_catalog
+    config:
+      enabled: true
+      

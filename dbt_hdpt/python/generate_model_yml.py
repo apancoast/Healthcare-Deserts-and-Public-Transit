@@ -20,7 +20,7 @@ class IndentedDumper(yaml.Dumper):
         return super(IndentedDumper, self).increase_indent(flow, False)
 
 
-def generate_model_yml(subfolder, prefix):
+def generate_model_yml(layer, subfolder, prefix, model_name=None):
     # Set up logging
     setup_logging()
 
@@ -28,8 +28,8 @@ def generate_model_yml(subfolder, prefix):
     script_dir = os.path.dirname(os.path.abspath(__file__))
 
     # Paths relative to the project root
-    models_path = os.path.join(script_dir, "..", "models", subfolder)
-    seeds_path = os.path.join(script_dir, "..", "seeds", subfolder)
+    models_path = os.path.join(script_dir, "..", "models", layer, subfolder)
+    seeds_path = os.path.join(script_dir, "..", "seeds", layer)
 
     # Ensure paths exist
     if not os.path.exists(models_path):
@@ -39,70 +39,72 @@ def generate_model_yml(subfolder, prefix):
         logging.error(f"Seeds path '{seeds_path}' does not exist.")
         raise FileNotFoundError(f"Seeds path '{seeds_path}' does not exist.")
 
-    # Iterate over subfolders in models/{subfolder}
-    for subfolder_2 in os.listdir(models_path):
-        subfolder_2_path = os.path.join(models_path, subfolder_2)
-        if not os.path.isdir(subfolder_2_path):
+    # Filter seed files based on model_name if specified
+    all_seed_files = os.listdir(seeds_path)
+
+    
+    if model_name:
+        seed_files = [f for f in all_seed_files if f"__{model_name}__" in f]
+    else:
+        seed_files = all_seed_files  # Process all seed files if no model_name is specified
+
+    if not seed_files:
+        logging.warning(f"No seed files found in '{seeds_path}' matching the criteria.")
+        return
+
+    for seed_file in seed_files:
+        # Extract {source} and {model_name} from the seed file name
+        parts = seed_file.split("__")
+        if len(parts) < 3:
+            logging.warning(f"Skipping file '{seed_file}' due to unexpected naming format.")
             continue
 
-        logging.info(f"Processing subfolder: {subfolder_2}")
+        source = parts[0].replace("seed_", "")  # Extract the source
+        extracted_model_name = parts[1]  # Extract model_name
 
-        # Find seed files matching the pattern
-        seed_files = [
-            f
-            for f in os.listdir(seeds_path)
-            if f.startswith(f"seed_{subfolder_2}__")
-            and f.endswith("__data_catalog.csv")
-        ]
+        # Ensure we only process the matching source folder
+        source_folder_path = os.path.join(models_path)
+        print(source_folder_path)
+        if not os.path.exists(source_folder_path):
+            logging.warning(f"Skipping '{seed_file}': No corresponding model folder for source '{source}'.")
+            continue
 
-        # Initialize models list for YAML
-        models = []
+        logging.info(f"Processing model: {prefix}_{source}__{extracted_model_name}")
 
-        for seed_file in seed_files:
-            # Extract model_name from seed file name
-            parts = seed_file.split("__")
-            if len(parts) < 3:
-                continue
+        seed_file_path = os.path.join(seeds_path, seed_file)
 
-            model_name = parts[1]
-            seed_file_path = os.path.join(seeds_path, seed_file)
+        # Read CSV to extract stage_column_name and description
+        try:
+            with open(seed_file_path, "r", encoding="utf-8") as csvfile:
+                reader = csv.DictReader(csvfile)
+                columns = []
+                for row in reader:
+                    stage_column_name = row.get("stage_column_name")
+                    description = row.get("description")
 
-            logging.info(f"Processing seed file: {seed_file}")
+                    if not stage_column_name or not description:
+                        continue
 
-            # Read CSV to extract stage_column_name and description
-            try:
-                with open(seed_file_path, "r", encoding="utf-8") as csvfile:
-                    reader = csv.DictReader(csvfile)
-                    columns = []
-                    for row in reader:
-                        stage_column_name = row.get("stage_column_name")
-                        description = row.get("description")
+                    cleaned_description = description.strip("\'")
+                    columns.append(
+                        {
+                            "name": stage_column_name,
+                            "description": f"{cleaned_description}"
+                        }
+                    )
 
-                        if not stage_column_name or not description:
-                            continue
-                        
-                        cleaned_description = description.strip("\'")
-                        columns.append(
-                            {
-                                "name": stage_column_name,
-                                "description": f"{cleaned_description}"
-                            }
-                        )
-                        
-            except Exception as e:
-                logging.error(f"Error reading file '{seed_file_path}': {e}")
-                continue
+        except Exception as e:
+            logging.error(f"Error reading file '{seed_file_path}': {e}")
+            continue
 
-            # Add model to list
-            models.append(
-                {
-                    "name": f"{prefix}_{subfolder_2}__{model_name}",
-                    "columns": columns,
-                }
-            )
+        # Generate YAML structure
+        models = [{
+            "name": f"{prefix}_{source}__{extracted_model_name}",
+            "columns": columns,
+        }]
 
-        # Generate YAML file
-        yml_path = os.path.join(subfolder_2_path, f"{subfolder_2}__models.yml")
+        # Generate YAML file in the correct source subfolder
+        yml_path = os.path.join(source_folder_path, f"{source}__models.yml")
         try:
             with open(yml_path, "w", encoding="utf-8") as ymlfile:
                 yaml.dump(
@@ -122,12 +124,14 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description="Generate dbt model YAML files.")
-    parser.add_argument("subfolder", help="Subfolder under models/ and seeds/.")
+    parser.add_argument("layer", help="Subfolder under models/.")
+    parser.add_argument("subfolder", help="Subfolder under models/layer and seeds/.")
     parser.add_argument("prefix", help="Model prefix (e.g., stg).")
+    parser.add_argument("--model_name", "-m", help="Specific model name to generate YAML for", default=None)
 
     args = parser.parse_args()
 
     try:
-        generate_model_yml(args.subfolder, args.prefix)
+        generate_model_yml(args.layer, args.subfolder, args.prefix, args.model_name)
     except Exception as e:
         logging.error(f"Script failed: {e}")

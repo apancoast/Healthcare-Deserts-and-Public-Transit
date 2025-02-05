@@ -1,0 +1,33 @@
+raw_index,stage_index,raw_column_name,stage_column_name,stage_user_friendly_name,description,data_type,length
+1,1,NPI,npi,NPI,Unique clinician ID assigned by NPPES,string,10
+2,2,Ind_PAC_ID,pac_id,PAC ID,Unique individual clinician ID assigned by PECOS,string,10
+3,3,Ind_enrl_ID,clinician_enrl_id,Clinician Enrollment ID,Unique ID for the clinician enrollment that is the source for the data in the observation,string,15
+4,4,Provider Last Name,last_name,Provider Last Name,Individual clinician last name,string,35
+5,5,Provider First Name,first_name,Provider First Name,Individual clinician first name,string,25
+6,6,Provider Middle Name,middle_name,Provider Middle Name,Individual clinician middle name,string,25
+7,7,suff,suffix,Suffix,Individual clinician suffix,string,10
+8,8,gndr,gender,Gender,Individual clinician gender,string,1
+9,9,Cred,credential,Credential,"Medical credential such as MD, DO, DPM, etc.",string,3
+10,10,Med_sch,med_school,Medical school name,Individual clinician’s medical school,string,100
+11,11,Grd_yr,graduation_year,Graduation year,Individual clinician’s medical school graduation year,int,4
+12,12,Pri_spec,pri_spec,Primary specialty,Primary medical specialty reported by the individual clinician in the selected enrollment,string,60
+13,13,Sec_spec_1,sec_spec_one,Secondary specialty 1,First secondary medical specialty reported by the individual clinician in the selected enrollment,string,60
+14,14,Sec_spec_2,sec_spec_two,Secondary specialty 2,Second secondary medical specialty reported by the individual clinician in the selected enrollment,string,60
+15,15,Sec_spec_3,sec_spec_three,Secondary specialty 3,Third secondary medical specialty reported by the individual clinician in the selected enrollment,string,60
+16,16,Sec_spec_4,sec_spec_four,Secondary specialty 4,Fourth secondary medical specialty reported by the individual clinician in the selected enrollment,string,60
+17,17,Sec_spec_all,sec_spec_all,All secondary specialties,All secondary medical specialty reported by the individual clinician in the selected enrollment,string,200
+18,18,Telehlth,telehealth,Telehealth,Indicator for whether clinician offers telehealth services over video and/or audio y = Medicare fee-for-service claims indicate that clinician offers telehealth services,string,1
+19,19,Facility Name,facility_name,Facility Name,Legal organization name of the group practice that the individual clinician works with – will be blank if the address is not linked to a group,string,70
+20,20,Org_PAC_ID,org_pac_id,Group PAC ID,Unique group ID assigned by PECOS to the group that the individual clinician works with – will be blank if the address is not linked to a group,string,10
+21,21,num_org_mem,num_org_members,"Number of group
+members",Total number of individual clinicians affiliated with the group based on Group Practice PAC ID,int,8
+22,22,adr_ln_1,addr_line_one,Line 1 Street Address,Group or individual's line 1 address,string,55
+23,23,adr_ln_2,addr_line_two,Line 2 Street Address,Group or individual's line 2 address,string,55
+24,24,ln_2_sprs,line_two_sprs_flag,Marker of address line 2 suppression,Marker that the address as reported may be incomplete,string,1
+25,25,City/Town,city,City/Town,Group or individual's city,string,30
+26,26,State,state,State,Group or individual's state,string,2
+27,27,ZIP Code,zip_code,ZIP Code,Group or individual's ZIP code (9 digits when available),string,15
+28,28,Telephone Number,telephone_number,Telephone Number,Phone number is listed only when there is a single phone number available for the address,string,20
+29,29,ind_assgn,ind_medicare_assgn,Clinician accepts Medicare Assignment,Indicator for whether clinician accepts Medicare approved amount as payment in full. Y = Clinician accepts Medicare approved amount as payment in full. M = Clinician may accept Medicare Assignment,string,1
+30,30,grp_assgn,org_medicare_assgn,Group accepts Medicare Assignment,Indicator for whether group accepts Medicare approved amount as payment in full. y = Group accepts Medicare approved amount as payment in full. M = Group may accept Medicare Assignment,string,1
+31,31,adrs_id,addr_id,Address ID,"Unique identifier for the practice location; offices within the same building, but varied by suite or floor, will have the same Address ID aside from the final two characters",string,25
