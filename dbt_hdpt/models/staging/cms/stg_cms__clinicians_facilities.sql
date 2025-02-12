@@ -12,7 +12,13 @@ with source as (
   )
 select 
     {%- for index in range(0, cols|length) %}
-    "{{ cols[index] }}" as {{ as_cols[index] }}{%- if not loop.last -%},{% endif %}
+    {# "{{ cols[index] }}" as {{ as_cols[index] }} #}
+    {%- if data_types[index] == 'string' -%}
+        trim(upper("{{ cols[index] }}"::varchar)) as {{ as_cols[index] }}
+    {%- else -%}
+        "{{ cols[index] }}" as {{ as_cols[index] }}
+    {%- endif -%}
+    {%- if not loop.last -%},{% endif %}
     {%- endfor %}
 from source
     
