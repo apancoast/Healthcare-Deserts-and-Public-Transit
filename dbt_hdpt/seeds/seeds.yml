@@ -31,7 +31,6 @@ seeds:
   - name: seed_cms__clinicians_facilities__data_catalog
     config:
       enabled: true
-  - name: meck_co_zip_codes
+  - name: seed__meck_co_zip_codes
     config:
-      enabled: false # need to review required format before seeding
-      
+      enabled: true

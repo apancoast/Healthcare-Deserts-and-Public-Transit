@@ -4,6 +4,7 @@
 {%- set as_cols = dbt_utils.get_column_values(table=seed_ref, column='stage_column_name', order_by='min(stage_index)') -%}
 {%- set data_types = get_col_values_from_query(table=seed_ref, column='data_type') -%}
 
+{%- set zips = dbt_utils.get_column_values(table=ref('seed__meck_co_zip_codes'), column='zip') -%}
 
 with source as (
         select
@@ -21,4 +22,8 @@ select
     {%- if not loop.last -%},{% endif %}
     {%- endfor %}
 from source
-    
+where left("ZIP Code"::varchar, 5) in (
+    {%- for zip in zips %}
+    {{ zip }}{%- if not loop.last -%},{% endif %}
+    {%- endfor %}
+    )
