@@ -2,6 +2,10 @@ version: 2
 models:
 - name: stg_hpsa__components_shapefile
   description: '{{ doc("model__hpsa__components_shapefile") }}'
+  data_tests:
+    - row_count_equal_to_source_file:
+          source_name: 'hpsa'
+          table_name: 'HPSA_CMPPC_SHP_DET_CUR_VX'  
   columns:
   - name: shape_object_id
     type: primary_key

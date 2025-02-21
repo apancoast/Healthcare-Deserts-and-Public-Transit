@@ -3,7 +3,7 @@ models:
 - name: stg_census_bureau__household_vehicles
   description: '{{ doc("model__household_vehicles") }}'
   data_tests:
-  - json_row_count:
+  - row_count_equal_to_source_file:
       source_name: census_bureau
       table_name: dp04
   columns:
@@ -249,7 +249,7 @@ models:
 - name: stg_census_bureau__public_insurance
   description: '{{ doc("model__public_insurance") }}'
   data_tests:
-  - json_row_count:
+  - row_count_equal_to_source_file:
       source_name: census_bureau
       table_name: s2704
   columns:

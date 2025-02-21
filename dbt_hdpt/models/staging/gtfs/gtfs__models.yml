@@ -7,6 +7,9 @@ models:
           combination_of_columns:
             - service_id
             - service_date
+      - row_count_equal_to_source_file:
+          source_name: 'gtfs'
+          table_name: 'calendar_dates'     
     columns:
       - name: service_id
         type: primary_key
@@ -32,6 +35,10 @@ models:
               column_type: varchar          
   - name: stg_gtfs__routes
     description: '{{ doc("src_file__routes") }}'
+    data_tests:    
+      - row_count_equal_to_source_file:
+          source_name: 'gtfs'
+          table_name: 'routes'
     columns:
       - name: route_id
         description: Identifies a route.
@@ -69,7 +76,10 @@ models:
             - shape_id
             - shape_pt_lat
             - shape_pt_lon
-            - shape_pt_sequence
+            - shape_pt_sequence 
+      - row_count_equal_to_source_file:
+          source_name: 'gtfs'
+          table_name: 'shapes'            
     columns:
       - name: shape_id
         type: primary_key
@@ -95,6 +105,10 @@ models:
               column_type: bigint          
   - name: stg_gtfs__stops
     description: '{{ doc("src_file__stops") }}'
+    data_tests:    
+      - row_count_equal_to_source_file:
+          source_name: 'gtfs'
+          table_name: 'stops'    
     columns:
       - name: stop_id
         type: primary_key
@@ -145,6 +159,10 @@ models:
         description: 'Defines hierarchy between the different locations defined in stops.txt. It contains the ID of the parent location, as followed:- Stop/platform (location_type=0): the parent_station field contains the ID of a station.- Station (location_type=1): this field must be empty.- Entrance/exit (location_type=2) or generic node (location_type=3): the parent_station field contains the ID of a station (location_type=1)- Boarding Area (location_type=4): the parent_station field contains ID of a platform.Conditionally Required:- Required for locations which are entrances (location_type=2), generic nodes (location_type=3) or boarding areas (location_type=4).- Optional for stops/platforms (location_type=0).- Forbidden for stations (location_type=1).'
   - name: stg_gtfs__stop_times
     description: '{{ doc("src_file__stop_times") }}'
+    data_tests:    
+      - row_count_equal_to_source_file:
+          source_name: 'gtfs'
+          table_name: 'stop_times'    
     columns:
       - name: trip_id
         data_tests:
@@ -212,6 +230,10 @@ models:
         description: A descriptive text of the timepoint.
   - name: stg_gtfs__trips
     description: '{{ doc("src_file__trips") }}'
+    data_tests:    
+      - row_count_equal_to_source_file:
+          source_name: 'gtfs'
+          table_name: 'trips'    
     columns:
       - name: route_id
         type: foreign_key

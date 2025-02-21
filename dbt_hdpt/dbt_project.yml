@@ -46,6 +46,8 @@ models:
       # Applies to all files under models/staging 
       +materialized: table
       schema: stg
+      _cms:  # Excluding cms data from scope ##TODO is this working? syntax? https://github.com/dbt-labs/dbt-core/discussions/5466
+        +enabled: false
       # This configuration builds every model in the staging directory into a schema named staging_<target_schema>
       # learn more about custom schemas: https://docs.getdbt.com/docs/building-a-dbt-project/building-models/using-custom-schemas
       #       # marts:
