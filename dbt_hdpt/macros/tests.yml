@@ -1,0 +1,18 @@
+version: 2
+
+macros:
+  - name: json_row_count
+    description: >
+      Validates that the row count of a dbt model matches the expected row count 
+      from a JSON source file. The expected row count is determined by reading 
+      the JSON source using `read_json()`, subtracting one to account for headers. If the actual row count from the model differs from the expected count, the test fails.
+    arguments:
+      - name: source_name
+        type: string
+        description: "The name of the source as defined in dbt sources."
+      - name: table_name
+        type: string
+        description: "The name of the table within the source."
+      - name: model
+        type: string
+        description: "The dbt model whose row count is being validated."

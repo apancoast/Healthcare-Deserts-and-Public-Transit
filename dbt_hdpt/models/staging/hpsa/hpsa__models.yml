@@ -1,83 +1,266 @@
 version: 2
 models:
-  - name: stg_hpsa__components_shapefile
-    description: '{{ doc("model__hpsa__components_shapefile") }}'
-    columns:
-      - name: shape_object_id
-        type: primary_key
-        data_tests:
-          - not_null
-          - unique
-        description: "This attribute represents the table unique, internal feature (record) number as required by ArcGIS. There is no requirement or expectation that a given feature has a persistent Object Identification Number value from one table (feature class) to the next as long as the Object Identification Number value is unique in a given spatial table."
-      - name: hpsa_source_id
-        description: This attribute represents the primary identifier for a Health Professional Shortage Area (HPSA) as a complete unit in the source data system.
-      - name: hpsa_name
-        description: This attribute represents the Health Professional Shortage Area (HPSA) name as identified in the most recent data refresh.
-      - name: hpsa_status_cd
-        description: This attribute represents the one character identifier that designates the current status of the HPSA designation. For further information about Health Professional Shortage Areas (HPSA) refer to the https://bhw.hrsa.gov/shortage-designation/ website.
-      - name: hpsa_status_desc
-        description: This attribute represents the textual description of the current status of the Health Professional Shortage Area (HPSA) designation.
-      - name: hpsa_type_cd
-        description: This attribute represents the geography or facility type code characterizing the Health Professional Shortage Area (HPSA).
-      - name: hpsa_type_desc
-        description: This attribute represents the textual description of the Health Professional Shortage Area (HPSA) type.
-      - name: hpsa_score
-        description: This attribute represents the Health Professional Shortage Area (HPSA) Score developed by the National Health Service Corps (NHSC) in determining priorities for assignment of clinicians. The scores range from 0 to 26 where the higher the score, the greater the priority.
-      - name: maternity_care_tgt_areas_suppl_score
-        description: This attribute represents the Maternity Care Target Areas (MCTA) supplementary score. MCTA Supplementary Scores are only available for Primary Care Health Professional Shortage Areas (HPSAs).
-      - name: hpsa_shortage
-        description: This attribute represents the number of full-time equivalent (FTE) practitioners needed in the Health Professional Shortage Area (HPSA) so that it will achieve the population to practitioner target ratio. The target ratio is determined by the type (discipline) of the HPSA.
-      - name: hpsa_formal_ratio
-        description: This attribute represents the ratio of the Health Professional Shortage Area (HPSA) Designation Population to HPSA provider full-time equivalents displayed in ratio format (for example, 3500:1), where the population and the designation share the same discipline class (for example, Primary Care, Dental Care, and Mental Health).
-      - name: hpsa_tot_fte_clinicians
-        description: This attribute represents the number of practitioners providing ambulatory patient care in the Health Professional Shortage Area (HPSA) expressed as full-time equivalents.
-      - name: hpsa_pct_of_pop_below_pl
-        description: This attribute represents the percent of the resident or patient population in the Health Professional Shortage Area (HPSA) living below the U.S. Federal Poverty Level (USFPL).
-      - name: hpsa_des_date
-        description: This attribute represents the date on which the Health Professional Shortage Area (HPSA) was originally designated as a shortage area.
-      - name: hpsa_des_last_update_date
-        description: This attribute represents the date on which the Health Professional Shortage Area (HPSA) information was last updated in the source system.
-      - name: hpsa_des_pop
-        description: This attribute represents the number of persons which have been identified by the HRSA, Bureau of Health Workforce (BHW), Division of Policy and Shortage Designation (DPSD) as being affected by the Health Professional Shortage Area (HPSA).
-      - name: hpsa_est_underserved_pop
-        description: This attribute represents the estimated underserved population served by the full-time equivalent (FTE) health care practitioners within a Health Professional Shortage Area (HPSA).
-      - name: hpsa_est_served_pop
-        description: This attribute represents the estimated total population served by the full-time equivalent (FTE) Health care practitioners within a Health Professional Shortage Area (HPSA).
-      - name: hpsa_metro_indicator
-        description: This attribute represents the description indicating whether a Health Professional Shortage Area (HPSA) is either Metropolitan, Non-Metropolitan, or Frontier in nature.
-      - name: hpsa_provider_ratio_goal
-        description: This attribute represents the Health Professional Shortage Area (HPSA) Provider Ratio Goal that is the target population per provider (physician) for the HPSA in a Discipline Class. Federal regulations stipulate that, in order to be considered as having a shortage of providers, an area must have a population-to-provider ratio of a certain threshold. For primary medical care, the population to provider ratio must be at least 3,500 to 1 (3,000 to 1 if there are unusually high needs in the community). For dental, the ratio must be at least 5,000 to 1 (4,000 to 1 in high-need communities). For mental health, the area must have a population to psychiatrist ratio of 30,000 to 1 (20,000 to 1 in high-need communities). For further information about Health Professional Shortage Areas (HPSA) refer to the https://bhw.hrsa.gov/shortage-designation/ website.
-      - name: discipline_class_num
-        description: This attribute represents the single character code used by the HRSA Data Warehouse (HDW) to indicate the Discipline Class identification number (ID) values associated with health related discipline classes.
-      - name: discipline_class_desc
-        description: This attribute represents the Health Professional Shortage Area (HPSA) discipline class description. HPSA disciplines may be listed as Primary Care, Dental Health, or Mental Health.
-      - name: hpsa_comp_name
-        description: This attribute represents the name assigned to the Health Professional Shortage Area (HPSA) component as identified in the most recent data refresh.
-      - name: hpsa_comp_type
-        description: This attribute represents the Health Professional Shortage Area (HPSA) Component Type Description which identifies in words the type of the HPSA for the component.
-      - name: hpsa_geography_id
-        description: This attribute represents the Health Professional Shortage Area (HPSA) geography code which identifies the specific geographic area (county, county subdivision (CSD), or Census Tract) associated with the HPSA.
-      - name: county_fips_cd
-        description: This attribute represents the numeric character string assigned by the National Institute of Standards and Technology to the counties and/or county equivalents for the states, the District of Columbia, and U.S. territories.
-      - name: county_name
-        description: This attribute represents the name of the county or county equivalent in which the associated address is located, displayed as a text string.
-      - name: state_fips_cd
-        description: This attribute represents the State Federal Information Processing Standard (FIPS) code identifying the two numeric character string assigned by the National Institute of Standards and Technology (NIST) to states, the District of Columbia, and U.S. territories.
-      - name: state_abbr
-        description: This attribute represents the U.S. Postal Service (USPS) two alphabetic character code for a U.S. state or U.S. territory associated with a location where an entity is situated.
-      - name: state_name
-        description: This attribute represents the state or territory name.
-      - name: record_create_date
-        description: This attribute represents the date on which the data was processed by the HRSA Data Warehouse.
-      - name: break_in_des
-        description: This attribute represents the indication of whether the Health Professional Shortage Area (HPSA) or Medically Underserved Area/Population (MUA/P) has been continuously designated since the original designation date.
-      - name: hpsa_pop_type_cd
-        description: This attribute represents the code of the population type in a designated Health Professional Shortage Area (HPSA).
-      - name: hpsa_pop_type_desc
-        description: This attribute represents the population type description which characterizes the Health Professional Shortage Area (HPSA).
-      - name: hpsa_resident_civilian_pop
-        description: This attribute represents the population type description for the Health Professional Shortage Area (HPSA).
-      - name: hpsa_withdrawn_date
-        description: This attribute represents the date on which the designation status was changed from designated to withdrawn.
-      - name: geometry
-        description: This attribute represents the geometry of the geographic feature.
+- name: stg_hpsa__components_shapefile
+  description: '{{ doc("model__hpsa__components_shapefile") }}'
+  columns:
+  - name: shape_object_id
+    type: primary_key
+    data_tests:
+    - not_null
+    - unique
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: bigint
+    description: This attribute represents the table unique, internal feature (record)
+      number as required by ArcGIS. There is no requirement or expectation that a
+      given feature has a persistent Object Identification Number value from one table
+      (feature class) to the next as long as the Object Identification Number value
+      is unique in a given spatial table.
+  - name: hpsa_source_id
+    description: This attribute represents the primary identifier for a Health Professional
+      Shortage Area (HPSA) as a complete unit in the source data system.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: hpsa_name
+    description: This attribute represents the Health Professional Shortage Area (HPSA)
+      name as identified in the most recent data refresh.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: hpsa_status_cd
+    description: This attribute represents the one character identifier that designates
+      the current status of the HPSA designation. For further information about Health
+      Professional Shortage Areas (HPSA) refer to the https://bhw.hrsa.gov/shortage-designation/
+      website.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: hpsa_status_desc
+    description: This attribute represents the textual description of the current
+      status of the Health Professional Shortage Area (HPSA) designation.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: hpsa_type_cd
+    description: This attribute represents the geography or facility type code characterizing
+      the Health Professional Shortage Area (HPSA).
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: hpsa_type_desc
+    description: This attribute represents the textual description of the Health Professional
+      Shortage Area (HPSA) type.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: hpsa_score
+    description: This attribute represents the Health Professional Shortage Area (HPSA)
+      Score developed by the National Health Service Corps (NHSC) in determining priorities
+      for assignment of clinicians. The scores range from 0 to 26 where the higher
+      the score, the greater the priority.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: integer
+  - name: maternity_care_tgt_areas_suppl_score
+    description: This attribute represents the Maternity Care Target Areas (MCTA)
+      supplementary score. MCTA Supplementary Scores are only available for Primary
+      Care Health Professional Shortage Areas (HPSAs).
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: hpsa_shortage
+    description: This attribute represents the number of full-time equivalent (FTE)
+      practitioners needed in the Health Professional Shortage Area (HPSA) so that
+      it will achieve the population to practitioner target ratio. The target ratio
+      is determined by the type (discipline) of the HPSA.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: double
+  - name: hpsa_formal_ratio
+    description: This attribute represents the ratio of the Health Professional Shortage
+      Area (HPSA) Designation Population to HPSA provider full-time equivalents displayed
+      in ratio format (for example, 3500:1), where the population and the designation
+      share the same discipline class (for example, Primary Care, Dental Care, and
+      Mental Health).
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: hpsa_tot_fte_clinicians
+    description: This attribute represents the number of practitioners providing ambulatory
+      patient care in the Health Professional Shortage Area (HPSA) expressed as full-time
+      equivalents.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: double
+  - name: hpsa_pct_of_pop_below_pl
+    description: This attribute represents the percent of the resident or patient
+      population in the Health Professional Shortage Area (HPSA) living below the
+      U.S. Federal Poverty Level (USFPL).
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: double
+  - name: hpsa_des_date
+    description: This attribute represents the date on which the Health Professional
+      Shortage Area (HPSA) was originally designated as a shortage area.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: date
+  - name: hpsa_des_last_update_date
+    description: This attribute represents the date on which the Health Professional
+      Shortage Area (HPSA) information was last updated in the source system.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: date
+  - name: hpsa_des_pop
+    description: This attribute represents the number of persons which have been identified
+      by the HRSA, Bureau of Health Workforce (BHW), Division of Policy and Shortage
+      Designation (DPSD) as being affected by the Health Professional Shortage Area
+      (HPSA).
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: double
+  - name: hpsa_est_underserved_pop
+    description: This attribute represents the estimated underserved population served
+      by the full-time equivalent (FTE) health care practitioners within a Health
+      Professional Shortage Area (HPSA).
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: bigint
+  - name: hpsa_est_served_pop
+    description: This attribute represents the estimated total population served by
+      the full-time equivalent (FTE) Health care practitioners within a Health Professional
+      Shortage Area (HPSA).
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: bigint
+  - name: hpsa_metro_indicator
+    description: This attribute represents the description indicating whether a Health
+      Professional Shortage Area (HPSA) is either Metropolitan, Non-Metropolitan,
+      or Frontier in nature.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: hpsa_provider_ratio_goal
+    description: This attribute represents the Health Professional Shortage Area (HPSA)
+      Provider Ratio Goal that is the target population per provider (physician) for
+      the HPSA in a Discipline Class. Federal regulations stipulate that, in order
+      to be considered as having a shortage of providers, an area must have a population-to-provider
+      ratio of a certain threshold. For primary medical care, the population to provider
+      ratio must be at least 3,500 to 1 (3,000 to 1 if there are unusually high needs
+      in the community). For dental, the ratio must be at least 5,000 to 1 (4,000
+      to 1 in high-need communities). For mental health, the area must have a population
+      to psychiatrist ratio of 30,000 to 1 (20,000 to 1 in high-need communities).
+      For further information about Health Professional Shortage Areas (HPSA) refer
+      to the https://bhw.hrsa.gov/shortage-designation/ website.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: discipline_class_num
+    description: This attribute represents the single character code used by the HRSA
+      Data Warehouse (HDW) to indicate the Discipline Class identification number
+      (ID) values associated with health related discipline classes.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: integer
+  - name: discipline_class_desc
+    description: This attribute represents the Health Professional Shortage Area (HPSA)
+      discipline class description. HPSA disciplines may be listed as Primary Care,
+      Dental Health, or Mental Health.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: hpsa_comp_name
+    description: This attribute represents the name assigned to the Health Professional
+      Shortage Area (HPSA) component as identified in the most recent data refresh.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: hpsa_comp_type
+    description: This attribute represents the Health Professional Shortage Area (HPSA)
+      Component Type Description which identifies in words the type of the HPSA for
+      the component.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: hpsa_geography_id
+    description: This attribute represents the Health Professional Shortage Area (HPSA)
+      geography code which identifies the specific geographic area (county, county
+      subdivision (CSD), or Census Tract) associated with the HPSA.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: county_fips_cd
+    description: This attribute represents the numeric character string assigned by
+      the National Institute of Standards and Technology to the counties and/or county
+      equivalents for the states, the District of Columbia, and U.S. territories.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: county_name
+    description: This attribute represents the name of the county or county equivalent
+      in which the associated address is located, displayed as a text string.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: state_fips_cd
+    description: This attribute represents the State Federal Information Processing
+      Standard (FIPS) code identifying the two numeric character string assigned by
+      the National Institute of Standards and Technology (NIST) to states, the District
+      of Columbia, and U.S. territories.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: state_abbr
+    description: This attribute represents the U.S. Postal Service (USPS) two alphabetic
+      character code for a U.S. state or U.S. territory associated with a location
+      where an entity is situated.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: state_name
+    description: This attribute represents the state or territory name.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: record_create_date
+    description: This attribute represents the date on which the data was processed
+      by the HRSA Data Warehouse.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: date
+  - name: break_in_des
+    description: This attribute represents the indication of whether the Health Professional
+      Shortage Area (HPSA) or Medically Underserved Area/Population (MUA/P) has been
+      continuously designated since the original designation date.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: hpsa_pop_type_cd
+    description: This attribute represents the code of the population type in a designated
+      Health Professional Shortage Area (HPSA).
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: hpsa_pop_type_desc
+    description: This attribute represents the population type description which characterizes
+      the Health Professional Shortage Area (HPSA).
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: hpsa_resident_civilian_pop
+    description: This attribute represents the population type description for the
+      Health Professional Shortage Area (HPSA).
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: bigint
+  - name: hpsa_withdrawn_date
+    description: This attribute represents the date on which the designation status
+      was changed from designated to withdrawn.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: date
+  - name: geometry
+    description: This attribute represents the geometry of the geographic feature.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: geometry

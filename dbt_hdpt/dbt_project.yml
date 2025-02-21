@@ -1,13 +1,16 @@
 # Rename this project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: dpt_hdpt
+name: dbt_hdpt
 version: 1.0.0
 config-version: 2
 
 # This setting configures which "profile" dbt uses for this project. 
 # In dbt Cloud IDE, this field is unused.
 profile: dbt_hdpt
+
+vars: 
+  'dbt_date:time_zone': 'America/New York' # For Expectations package
 
 # These configurations specify where dbt should look for different types of files.
 # The `source-paths` config, for example, states that models in this project can be
@@ -37,7 +40,7 @@ clean-targets:
 # These settings can be overridden in the individual model files
 # # using the `{{ config(...) }}` macro. 
 models:
-  dpt_hdpt:
+  dbt_hdpt:
     # When you rename the project up top, remember to rename it here too. 
     staging:
       # Applies to all files under models/staging 
@@ -52,3 +55,6 @@ models:
 seeds:  # https://docs.getdbt.com/reference/seed-configs
   dbt_hdpt:
     schema: stg_metadata
+
+on-run-end:
+  - "{{ dbt_artifacts.upload_results(results) }}"
