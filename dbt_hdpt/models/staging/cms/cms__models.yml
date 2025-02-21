@@ -1,7 +1,6 @@
 version: 2
 models:
 - name: stg_cms__clinicians_facilities
-  +enabled: false
   columns:
   - name: npi
     data_tests:
