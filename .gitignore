@@ -14,3 +14,4 @@ duckdb/hdpt_dev.duckdb.wal
 /python
 .vscode/settings.json
 /DuckDB
+/requirements.txt
