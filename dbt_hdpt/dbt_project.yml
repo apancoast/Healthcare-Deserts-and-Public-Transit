@@ -58,6 +58,3 @@ models:
 seeds:  # https://docs.getdbt.com/reference/seed-configs
   dbt_hdpt:
     schema: stg_metadata
-
-on-run-end:
-  - "{{ dbt_artifacts.upload_results(results) }}"
