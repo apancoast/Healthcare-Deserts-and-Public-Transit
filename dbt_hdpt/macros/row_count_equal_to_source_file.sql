@@ -3,6 +3,8 @@
 {%- set compiled_source = source(source_name, table_name) | string -%}
 {%- set file_extension = compiled_source.split('.')[-1] | replace("'", "") | lower -%}
 
+{% do run_query("LOAD spatial;") %}
+
 {%- if file_extension == 'json' -%}
     {% set read_function = 'read_json' %}
     {% set count_expression = 'SELECT count(*) - 1 AS expected_row_count FROM ' + read_function + '(' + compiled_source + ')' %}
@@ -14,6 +16,10 @@
     {% set count_expression = 'SELECT count(*) AS expected_row_count FROM ' + read_function + '(' + compiled_source + ')' %}
 {%- else -%}
     {% set count_expression = 'SELECT count(*) AS expected_row_count FROM ' + compiled_source %}
+{%- endif -%}
+
+{%- if file_extension == 'shp' -%}
+    {% do run_query("LOAD spatial;") %}
 {%- endif -%}
 
 WITH expected_count AS (

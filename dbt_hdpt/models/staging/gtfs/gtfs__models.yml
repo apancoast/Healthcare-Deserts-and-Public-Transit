@@ -9,7 +9,9 @@ models:
             - service_date
       - row_count_equal_to_source_file:
           source_name: 'gtfs'
-          table_name: 'calendar_dates'     
+          table_name: 'calendar_dates'    
+      - dbt_expectations.expect_table_columns_to_contain_set:
+          column_list: ['service_id', 'service_date', 'exception_type', 'exception_type_desc']
     columns:
       - name: service_id
         type: primary_key
@@ -39,6 +41,8 @@ models:
       - row_count_equal_to_source_file:
           source_name: 'gtfs'
           table_name: 'routes'
+      - dbt_expectations.expect_table_columns_to_contain_set:
+          column_list: ['route_id', 'route_short_name', 'route_long_name', 'route_type', 'route_type_desc']
     columns:
       - name: route_id
         description: Identifies a route.
@@ -79,7 +83,9 @@ models:
             - shape_pt_sequence 
       - row_count_equal_to_source_file:
           source_name: 'gtfs'
-          table_name: 'shapes'            
+          table_name: 'shapes'
+      - dbt_expectations.expect_table_columns_to_contain_set:
+          column_list: ['shape_id', 'shape_pt_lat', 'shape_pt_lon', 'shape_pt_sequence']        
     columns:
       - name: shape_id
         type: primary_key
@@ -108,7 +114,9 @@ models:
     data_tests:    
       - row_count_equal_to_source_file:
           source_name: 'gtfs'
-          table_name: 'stops'    
+          table_name: 'stops'
+      - dbt_expectations.expect_table_columns_to_contain_set:
+          column_list: ['stop_id', 'stop_code', 'stop_name', 'stop_lat', 'stop_lon', 'location_type', 'location_type_desc', 'parent_station']
     columns:
       - name: stop_id
         type: primary_key
@@ -162,7 +170,9 @@ models:
     data_tests:    
       - row_count_equal_to_source_file:
           source_name: 'gtfs'
-          table_name: 'stop_times'    
+          table_name: 'stop_times'
+      - dbt_expectations.expect_table_columns_to_contain_set:
+          column_list: ['trip_id', 'arrival_time', 'departure_time', 'stop_id', 'stop_sequence', 'pickup_type', 'pickup_type_desc', 'drop_off_type', 'drop_off_type_desc', 'timepoint']
     columns:
       - name: trip_id
         data_tests:
@@ -233,7 +243,9 @@ models:
     data_tests:    
       - row_count_equal_to_source_file:
           source_name: 'gtfs'
-          table_name: 'trips'    
+          table_name: 'trips'
+      - dbt_expectations.expect_table_columns_to_contain_set:
+          column_list: ['route_id', 'service_id', 'trip_id', 'trip_headsign', 'direction_id', 'direction_id_desc', 'block_id', 'shape_id']
     columns:
       - name: route_id
         type: foreign_key
