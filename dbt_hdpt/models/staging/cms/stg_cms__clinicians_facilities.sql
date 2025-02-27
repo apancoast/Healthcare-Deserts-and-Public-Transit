@@ -4,15 +4,20 @@
 {%- set as_cols = dbt_utils.get_column_values(table=seed_ref, column='stage_column_name', order_by='min(stage_index)') -%}
 {%- set data_types = get_col_values_from_query(table=seed_ref, column='data_type') -%}
 
-
 with source as (
         select
             *
-        from read_csv({{ source('census_bureau', 'doc') }})
+        from read_csv({{ source('cms', 'doc') }})
   )
 select 
     {%- for index in range(0, cols|length) %}
-    "{{ cols[index] }}" as {{ as_cols[index] }}{%- if not loop.last -%},{% endif %}
+    {# "{{ cols[index] }}" as {{ as_cols[index] }} #}
+    {%- if data_types[index] == 'string' -%}
+        trim(upper("{{ cols[index] }}"::varchar)) as {{ as_cols[index] }}
+    {%- else -%}
+        "{{ cols[index] }}" as {{ as_cols[index] }}
+    {%- endif -%}
+    {%- if not loop.last -%},{% endif %}
     {%- endfor %}
 from source
     

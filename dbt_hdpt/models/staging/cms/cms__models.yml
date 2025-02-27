@@ -1,74 +1,187 @@
 version: 2
 models:
-  - name: stg_cms__clinicians_facilities
-    columns: ## TODO add PKs?
-      - name: npi
-        data_tests:
-          - not_null
-        description: Unique clinician ID assigned by NPPES
-      - name: pac_id
-          data_tests:
-          - not_null
-        description: Unique individual clinician ID assigned by PECOS
-      - name: clinician_enrl_id
-          data_tests:
-          - not_null
-        description: Unique ID for the clinician enrollment that is the source for the data in the observation
-      - name: last_name
-        description: Individual clinician last name
-      - name: first_name
-        description: Individual clinician first name
-      - name: middle_name
-        description: Individual clinician middle name
-      - name: suffix
-        description: Individual clinician suffix
-      - name: gender
-        description: Individual clinician gender
-      - name: credential
-        description: Medical credential such as MD, DO, DPM, etc.
-      - name: med_school
-        description: "Individual clinician\u2019s medical school"
-      - name: graduation_year
-        description: "Individual clinician\u2019s medical school graduation year"
-      - name: pri_spec
-        description: Primary medical specialty reported by the individual clinician in the selected enrollment
-      - name: sec_spec_one
-        description: First secondary medical specialty reported by the individual clinician in the selected enrollment
-      - name: sec_spec_two
-        description: Second secondary medical specialty reported by the individual clinician in the selected enrollment
-      - name: sec_spec_three
-        description: Third secondary medical specialty reported by the individual clinician in the selected enrollment
-      - name: sec_spec_four
-        description: Fourth secondary medical specialty reported by the individual clinician in the selected enrollment
-      - name: sec_spec_all
-        description: All secondary medical specialty reported by the individual clinician in the selected enrollment
-      - name: telehealth
-        description: Indicator for whether clinician offers telehealth services over video and/or audio y = Medicare fee-for-service claims indicate that clinician offers telehealth services
-      - name: facility_name
-        description: "Legal organization name of the group practice that the individual clinician works with \u2013 will be blank if the address is not linked to a group"
-      - name: org_pac_id
-        description: "Unique group ID assigned by PECOS to the group that the individual clinician works with \u2013 will be blank if the address is not linked to a group"
-      - name: num_org_members
-        description: Total number of individual clinicians affiliated with the group based on Group Practice PAC ID
-      - name: addr_line_one
-        description: Group or individual's line 1 address
-      - name: addr_line_two
-        description: Group or individual's line 2 address
-      - name: line_two_sprs_flag
-        description: Marker that the address as reported may be incomplete
-      - name: city
-        description: Group or individual's city
-      - name: state
-        description: Group or individual's state
-      - name: zip_code
-        description: Group or individual's ZIP code (9 digits when available)
-      - name: telephone_number
-        description: 'Phone number is listed only when there is a single phone number available for the address'
-      - name: ind_medicare_assgn
-        description: Indicator for whether clinician accepts Medicare approved amount as payment in full. Y = Clinician accepts Medicare approved amount as payment in full. M = Clinician may accept Medicare Assignment
-      - name: org_medicare_assgn
-        description: Indicator for whether group accepts Medicare approved amount as payment in full. y = Group accepts Medicare approved amount as payment in full. M = Group may accept Medicare Assignment
-      - name: addr_id
-          data_tests:
-          - not_null
-        description: Unique identifier for the practice location; offices within the same building, but varied by suite or floor, will have the same Address ID aside from the final two characters
+- name: stg_cms__clinicians_facilities
+  columns:
+  - name: npi
+    data_tests:
+    - not_null
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+    description: Unique clinician ID assigned by NPPES
+  - name: pac_id
+    data_tests:
+    - not_null
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+    description: Unique individual clinician ID assigned by PECOS
+  - name: clinician_enrl_id
+    data_tests:
+    - not_null
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+    description: Unique ID for the clinician enrollment that is the source for the
+      data in the observation
+  - name: last_name
+    description: Individual clinician last name
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: first_name
+    description: Individual clinician first name
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: middle_name
+    description: Individual clinician middle name
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: suffix
+    description: Individual clinician suffix
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: gender
+    description: Individual clinician gender
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: credential
+    description: Medical credential such as MD, DO, DPM, etc.
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: med_school
+    description: "Individual clinician\u2019s medical school"
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: graduation_year
+    description: "Individual clinician\u2019s medical school graduation year"
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: integer
+  - name: pri_spec
+    description: Primary medical specialty reported by the individual clinician in
+      the selected enrollment
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: sec_spec_one
+    description: First secondary medical specialty reported by the individual clinician
+      in the selected enrollment
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: sec_spec_two
+    description: Second secondary medical specialty reported by the individual clinician
+      in the selected enrollment
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: sec_spec_three
+    description: Third secondary medical specialty reported by the individual clinician
+      in the selected enrollment
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: sec_spec_four
+    description: Fourth secondary medical specialty reported by the individual clinician
+      in the selected enrollment
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: sec_spec_all
+    description: All secondary medical specialty reported by the individual clinician
+      in the selected enrollment
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: telehealth
+    description: Indicator for whether clinician offers telehealth services over video
+      and/or audio y = Medicare fee-for-service claims indicate that clinician offers
+      telehealth services
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: facility_name
+    description: "Legal organization name of the group practice that the individual\
+      \ clinician works with \u2013 will be blank if the address is not linked to\
+      \ a group"
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: org_pac_id
+    description: "Unique group ID assigned by PECOS to the group that the individual\
+      \ clinician works with \u2013 will be blank if the address is not linked to\
+      \ a group"
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: num_org_members
+    description: Total number of individual clinicians affiliated with the group based
+      on Group Practice PAC ID
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: integer
+  - name: addr_line_one
+    description: Group or individual's line 1 address
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: addr_line_two
+    description: Group or individual's line 2 address
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: line_two_sprs_flag
+    description: Marker that the address as reported may be incomplete
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: city
+    description: Group or individual's city
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: state
+    description: Group or individual's state
+    data_tests:
+    - accepted_values:
+        values:
+        - NC
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: zip_code
+    description: Group or individual's ZIP code (9 digits when available)
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: telephone_number
+    description: Phone number is listed only when there is a single phone number available
+      for the address
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: ind_medicare_assgn
+    description: Indicator for whether clinician accepts Medicare approved amount
+      as payment in full. Y = Clinician accepts Medicare approved amount as payment
+      in full. M = Clinician may accept Medicare Assignment
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: org_medicare_assgn
+    description: Indicator for whether group accepts Medicare approved amount as payment
+      in full. y = Group accepts Medicare approved amount as payment in full. M =
+      Group may accept Medicare Assignment
+    data_tests:
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+  - name: addr_id
+    data_tests:
+    - not_null
+    - dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: varchar
+    description: Unique identifier for the practice location; offices within the same
+      building, but varied by suite or floor, will have the same Address ID aside
+      from the final two characters

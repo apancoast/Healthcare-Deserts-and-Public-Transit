@@ -1,0 +1,21 @@
+version: 2
+
+tests:
+  - name: row_count_equal_to_source_file
+    description:
+      "This test verifies that the row count in the given model matches the expected row count from the source file. It dynamically determines how to read the source based on the file extension:\n
+          - `.json` uses `read_json` and subtracts 1 from the count.\n
+          - `.csv` and `.txt` use `read_csv`.\n
+          - `.shp` uses `ST_read`.\n
+          - Other formats are read directly from the compiled source reference.\n\n
+      If there is a mismatch between the actual row count and the expected row count, the test will fail."
+    arguments:
+      - name: source_name
+        type: string
+        description: "The name of the source as defined in dbt sources."
+      - name: table_name
+        type: string
+        description: "The name of the table within the source."
+      - name: model
+        type: string
+        description: "The dbt model whose row count is being validated."

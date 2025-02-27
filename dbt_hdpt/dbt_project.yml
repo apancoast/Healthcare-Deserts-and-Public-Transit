@@ -1,13 +1,16 @@
 # Rename this project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: dpt_hdpt
+name: dbt_hdpt
 version: 1.0.0
 config-version: 2
 
 # This setting configures which "profile" dbt uses for this project. 
 # In dbt Cloud IDE, this field is unused.
 profile: dbt_hdpt
+
+vars: 
+  'dbt_date:time_zone': 'America/New York' # For Expectations package
 
 # These configurations specify where dbt should look for different types of files.
 # The `source-paths` config, for example, states that models in this project can be
@@ -28,6 +31,7 @@ seed-paths:
 clean-targets:
   # directories to be removed by `dbt clean`
   - target
+  - dbt_packages
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -37,12 +41,14 @@ clean-targets:
 # These settings can be overridden in the individual model files
 # # using the `{{ config(...) }}` macro. 
 models:
-  dpt_hdpt:
+  dbt_hdpt:
     # When you rename the project up top, remember to rename it here too. 
     staging:
       # Applies to all files under models/staging 
       +materialized: table
       schema: stg
+      cms:  # Excluding cms data from scope ##TODO is this working? syntax? https://github.com/dbt-labs/dbt-core/discussions/5466
+        +enabled: false
       # This configuration builds every model in the staging directory into a schema named staging_<target_schema>
       # learn more about custom schemas: https://docs.getdbt.com/docs/building-a-dbt-project/building-models/using-custom-schemas
       #       # marts:

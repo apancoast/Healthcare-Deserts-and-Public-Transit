@@ -2,7 +2,7 @@ with source as (
         select * from read_csv({{ source('gtfs', 'stop_times') }},types = {'arrival_time': 'timetz', 'departure_time': 'timetz'})
   )
 select
-    trip_id,
+    cast(trip_id as varchar) as trip_id,
 	arrival_time,
 	departure_time,
 	stop_id,

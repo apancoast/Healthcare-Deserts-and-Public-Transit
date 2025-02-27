@@ -2,7 +2,7 @@ version: 2
 # https://docs.getdbt.com/docs/build/sources
 
 sources:
-  - name: census_bureau
+  - name: cms
     description: '{{ doc("src__cms") }}'
     meta:
       external_location: "s3://hdpt/raw/cms/{name}.csv"

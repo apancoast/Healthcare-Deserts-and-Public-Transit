@@ -5,10 +5,10 @@ By leveraging dbt, this project aims to transform raw datasets into actionable i
 ### Project Scope
 Current project scope is limited to:
 - Mecklenburg County, North Carolina
-- Primary care access
+- Primary care health deserts
 - Populations with public insurance
 - Population demographics only include age ranges
-- Healthcare providers who are eligible to bill Medicaid/Medicare
+- ~~Healthcare providers who are eligible to bill Medicaid/Medicare~~
 - Public transit routes
 ### Outside of Project Scope
 but potential to add:
@@ -21,7 +21,6 @@ This project is being developed iteratively. While the foundational dbt models a
 
  Current focus areas include:
 - Finalizing research questions to prioritize modeling efforts.
-- Enhancing data sources to better quantify NSC.
 ### 🚀 Project Roadmap
 
 | Milestone                                 | Status         |
@@ -30,9 +29,18 @@ This project is being developed iteratively. While the foundational dbt models a
 | dbt and Duckdb init                       | ✅ Completed    |
 | Load raw datasets into staged layer       | ✅ Completed    |
 | Comprehensive staging layer documentation | ✅ Completed    |
-| Develop analytical models                 | 🔄 In Progress |
-| Test and validate model layer             | ⏳ Upcoming     |
+| Test and validate staging layer           | ✅ Completed     |
+| Design analytical models                | 🔄 In Progress |
+| Develop intermediate models to support mart layer                | 🔄 In Progress |
+| Test and intermediate layer             | ⏳ Upcoming     |
+| Develop mart layer models                | ⏳ Upcoming  |
+| Test and validate mart layer             | ⏳ Upcoming     |
 | Prepare visualization                     | ⏳ Upcoming     |
+
+### Change Log
+| Change Decision                                | Reason         | Applied         |
+| ----------------------------------------- | -------------- | -------------- |
+| Exclude CMS and nearest source of care from analysis.    | Too time-consuming to determine Primary Care Providers from all providers in this iteration.   | 2025-02-27    |
 
 ## 🛠️ Let's Get Technical
 ### Tech Stack
@@ -46,6 +54,7 @@ This project is being developed iteratively. While the foundational dbt models a
 	 - Documentation
 
 Key dbt features implemented: 
+
 	✅ Database connection via DuckDB  
 	✅ Staging models for raw data processing  
 	✅ Macros for reusable SQL logic  
