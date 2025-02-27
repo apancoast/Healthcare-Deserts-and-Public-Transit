@@ -4,8 +4,9 @@ models:
   description: '{{ doc("model__hpsa__components_shapefile") }}'
   data_tests:
     - row_count_equal_to_source_file:
-          source_name: 'hpsa'
-          table_name: 'HPSA_CMPPC_SHP_DET_CUR_VX'
+        source_name: 'hpsa'
+        table_name: 'HPSA_CMPPC_SHP_DET_CUR_VX'
+        where_clause: CStAbbr ='NC' and CntNM = 'Mecklenburg'
     - dbt_expectations.expect_table_columns_to_contain_set:
         column_list: ['shape_object_id', 'hpsa_source_id', 'hpsa_name', 'hpsa_status_cd', 'hpsa_status_desc', 'hpsa_type_cd', 'hpsa_type_desc', 'hpsa_score', 'maternity_care_tgt_areas_suppl_score', 'hpsa_shortage', 'hpsa_formal_ratio', 'hpsa_tot_fte_clinicians', 'hpsa_pct_of_pop_below_pl', 'hpsa_des_date', 'hpsa_des_last_update_date', 'hpsa_des_pop', 'hpsa_est_underserved_pop', 'hpsa_est_served_pop', 'hpsa_metro_indicator', 'hpsa_provider_ratio_goal', 'discipline_class_num', 'discipline_class_desc', 'hpsa_comp_name', 'hpsa_comp_type', 'hpsa_geography_id', 'county_fips_cd', 'county_name', 'state_fips_cd', 'state_abbr', 'state_name', 'record_create_date', 'break_in_des', 'hpsa_pop_type_cd', 'hpsa_pop_type_desc', 'hpsa_resident_civilian_pop', 'hpsa_withdrawn_date', 'geometry']
   columns:

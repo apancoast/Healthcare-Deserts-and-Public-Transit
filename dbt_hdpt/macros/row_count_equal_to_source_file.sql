@@ -1,4 +1,4 @@
-{%- test row_count_equal_to_source_file(source_name, table_name, model) -%}
+{%- test row_count_equal_to_source_file(source_name, table_name, model, where_clause=None) -%}
 
 {%- set compiled_source = source(source_name, table_name) | string -%}
 {%- set file_extension = compiled_source.split('.')[-1] | replace("'", "") | lower -%}
@@ -16,6 +16,10 @@
     {% set count_expression = 'SELECT count(*) AS expected_row_count FROM ' + read_function + '(' + compiled_source + ')' %}
 {%- else -%}
     {% set count_expression = 'SELECT count(*) AS expected_row_count FROM ' + compiled_source %}
+{%- endif -%}
+
+{%- if where_clause -%}
+    {% set count_expression = count_expression + ' WHERE ' + where_clause %}
 {%- endif -%}
 
 {%- if file_extension == 'shp' -%}
