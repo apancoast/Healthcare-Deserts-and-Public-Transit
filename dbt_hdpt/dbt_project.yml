@@ -54,6 +54,10 @@ models:
       #       # marts:
       #       #    # Applies to all files under models/marts/core
       #       #     +materialized: table 
+    marts:
+      +materialized: table
+
+    
 
 seeds:  # https://docs.getdbt.com/reference/seed-configs
   dbt_hdpt:
