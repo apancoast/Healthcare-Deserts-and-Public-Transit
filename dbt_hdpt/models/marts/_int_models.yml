@@ -2,3 +2,4 @@ version: 2
 
 models:
   - name: int_gtfs_stops_enriched
+  - name: int_gtfs_stops_aggregated
