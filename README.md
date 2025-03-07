@@ -30,9 +30,9 @@ This project is being developed iteratively. While the foundational dbt models a
 | Load raw datasets into staged layer       | ✅ Completed    |
 | Comprehensive staging layer documentation | ✅ Completed    |
 | Test and validate staging layer           | ✅ Completed     |
-| Design analytical models                | 🔄 In Progress |
+| Design analytical models                | ✅ Completed |
 | Develop intermediate models to support mart layer                | 🔄 In Progress |
-| Test and intermediate layer             | ⏳ Upcoming     |
+| Test and validate intermediate layer             | ⏳ Upcoming     |
 | Develop mart layer models                | ⏳ Upcoming  |
 | Test and validate mart layer             | ⏳ Upcoming     |
 | Prepare visualization                     | ⏳ Upcoming     |
