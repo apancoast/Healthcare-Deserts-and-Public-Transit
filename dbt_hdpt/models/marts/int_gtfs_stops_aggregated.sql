@@ -1,28 +1,33 @@
-with stop_headways as (
+with interest_window as ( -- Weekday and 7am to 7pm defines "window" of interest, referenced by later columns
     SELECT 
-        st.stop_id,
-        t.route_id,
-        st.arrival_time
-        , direction_id
-        , LEAD(st.arrival_time) OVER (
-            PARTITION BY st.stop_id
-            ORDER BY st.arrival_time
-        ) AS next_arrival_time
-        , date_diff('minute', st.arrival_time::time, next_arrival_time::time) as dif
-    FROM {{ ref('stg_gtfs__stop_times') }} st
-    JOIN {{ ref('stg_gtfs__trips') }} t ON st.trip_id = t.trip_id
+        st.stop_id
+        , st.arrival_time
+    FROM stg_gtfs__stop_times st
+    JOIN stg_gtfs__trips t ON st.trip_id = t.trip_id
     WHERE 
-        t.service_id like '%Weekday%' -- Typical PCP work days
-        and date_part('hour', st.arrival_time) between 7 and 19 -- Typical PCP business hours
-        and st.pickup_type = 0
-    order by stop_id, st.arrival_time
+        st.pickup_type = 0
+        and t.service_id like '%Weekday%' -- Typical PCP work days
+        and date_part('hour', st.arrival_time) between 7 and 19 -- Typical PCP business hours 
+)
+, headway_calculations as (
+    SELECT
+        stop_id
+        , COUNT(arrival_time) AS total_pickups_in_window -- Number of pickups throughout the day
+    FROM interest_window
+    group by stop_id
+)
+, routes as (
+    select
+        st.stop_id
+        , count(distinct t.route_id) as route_counts -- Number of routes that use stop
+    FROM stg_gtfs__stop_times st
+    JOIN stg_gtfs__trips t ON st.trip_id = t.trip_id
+    GROUP by st.stop_id
 )
 SELECT 
-    distinct
-    stop_id
-    , count(DISTINCT route_id) as route_counts -- Routes connected to stop
-    , round(COUNT(arrival_time) / 12.0,1) AS hourly_avg_freq  -- Trips per stop in a 12-hour window
-    , round(sum(dif) / 60, 1) AS avg_headway -- Average minute wait between pick-ups
-FROM stop_headways
-WHERE next_arrival_time IS NOT NULL
-group by stop_id
+    calcs.stop_id
+    , route_counts 
+    , total_pickups_in_window
+FROM headway_calculations calcs
+JOIN routes rts on rts.stop_id = calcs.stop_id
+;
