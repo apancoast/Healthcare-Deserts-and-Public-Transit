@@ -2,4 +2,4 @@ version: 2
 
 models:
   - name: int_gtfs_stops_enriched
-  - name: int_gtfs_stops_aggregated
+  - name: int_census_tract_gtfs_aggregated
