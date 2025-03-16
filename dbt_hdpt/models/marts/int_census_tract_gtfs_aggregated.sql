@@ -6,9 +6,9 @@ WITH interest_window AS (-- Week day and 7am to 7pm defines window of interest
         , t.route_id
         , ct.stop_id
         , t.trip_id
-    FROM stg_gtfs__stop_times st
-    JOIN stg_gtfs__trips t ON st.trip_id = t.trip_id
-    join int_gtfs_stops_enriched ct on st.stop_id = ct.stop_id
+    FROM {{ ref('stg_gtfs__stop_times') }} st
+    JOIN {{ ref('stg_gtfs__trips') }} t ON st.trip_id = t.trip_id
+    join {{ ref('int_gtfs_stops_enriched') }} ct on st.stop_id = ct.stop_id
     WHERE 
         st.pickup_type = 0
         and t.service_id like '%Weekday%'   -- Typical PCP work days
