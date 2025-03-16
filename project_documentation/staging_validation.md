@@ -11,12 +11,12 @@ Schema and data type discovery was done through gathering of source's metadata o
 
 | Validation Method                      | Tool Used                                                                                                                                                                                                              |
 | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Data Types                             | data_test from dbt Expectations package: [expect_column_values_to_be_of_type](https://github.com/calogica/dbt-expectations/blob/0.10.4/macros/schema_tests/column_values_basic/expect_column_values_to_be_of_type.sql) |
-| Redundancy by way of column selection  | data_test from dbt Expectations package: [expect_table_columns_to_contain_set](https://github.com/calogica/dbt-expectations/tree/0.10.4/?tab=readme-ov-file#expect_table_columns_to_contain_set)                       |
-| Record counts                          | custom data_test: row_count_equal_to_source_file                                                                                                                                                                       |
-| Referential integrity (within sources) | dbt data_test: relationships                                                                                                                                                                                           |
-| Uniqueness                             | dbt data_test: unique                                                                                                                                                                                                  |
-| Completeness                           | dbt data_test: not_null                                                                                                                                                                                                |
+| Data Types                             | `data_test from dbt Expectations package:` [expect_column_values_to_be_of_type](https://github.com/calogica/dbt-expectations/blob/0.10.4/macros/schema_tests/column_values_basic/expect_column_values_to_be_of_type.sql) |
+| Redundancy by way of column selection  | `data_test from dbt Expectations package:` [expect_table_columns_to_contain_set](https://github.com/calogica/dbt-expectations/tree/0.10.4/?tab=readme-ov-file#expect_table_columns_to_contain_set)                       |
+| Record counts                          | `custom data_test: row_count_equal_to_source_file`                                                                                                                                                                       |
+| Referential integrity (within sources) | `dbt data_test: relationships`                                                                                                                                                                                           |
+| Uniqueness                             | `dbt data_test: unique` and `dbt_utils: unique_combination_of_columns`                                                                                                   |
+| Completeness                           | `dbt data_test: not_null`                                                                                                                                                                                                |
 
 ### Test's Documentation
 Details of tests are documented through dbt docs:
