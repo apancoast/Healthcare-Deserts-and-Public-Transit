@@ -3,7 +3,6 @@ with source as (
   )
 select
 	stop_id,
-	stop_code,
 	stop_name,
 	stop_lat,
 	stop_lon,
