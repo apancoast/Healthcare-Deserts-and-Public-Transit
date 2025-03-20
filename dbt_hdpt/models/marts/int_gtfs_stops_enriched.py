@@ -14,8 +14,8 @@ def geocode_coordinates(row):
     tract_land_sq_meters = tract.get('AREALAND')
     
     return pd.Series({
-        'census_tract': census_tract,
-        'tract_land_sq_meters': tract_land_sq_meters
+        'census_tract': str(census_tract),
+        'tract_land_sq_meters': int(tract_land_sq_meters)
     })
 
 def model(dbt, session):
@@ -23,6 +23,6 @@ def model(dbt, session):
 
     result_df = stops_df.apply(geocode_coordinates, axis=1)
     
-    result_df['stop_id'] = stops_df['stop_id']
+    result_df['stop_id'] = stops_df['stop_id'].astype(str)
     
     return result_df
