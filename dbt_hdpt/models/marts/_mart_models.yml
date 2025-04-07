@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: census_tracts
+  - name: healthcare_shortage
+  - name: accessibility_metrics

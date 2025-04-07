@@ -2,3 +2,30 @@ version: 2
 
 models:
   - name: int_gtfs_stops_enriched
+    columns:
+      - name: stop_id
+        type: primary key
+        description: TODO Add PK descriptions to docs.md as they will be most re-used col descriptions
+        data_tests:
+          - unique
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: varchar
+      - name: census_tract
+        description: Foreign key to the census tract which the stop is located in. Derived via stop_lat and stop_long using Python package [censusgeocode](https://pypi.org/project/censusgeocode/).
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: varchar
+          - dbt_expectations.expect_column_value_lengths_to_be_between:
+              min_value: 14
+              max_value: 19
+              row_condition: "census_tract is not null"
+      - name: tract_land_sq_meters
+        description: Derived using Census Geocode API via python package censusgeocode. [Census Geocoder User Guide](https://www2.census.gov/geo/pdfs/maps-data/data/Census_Geocoder_User_Guide.pdf) states "This field provides land area in square meters for the geographic unit and is for statistical purposes only.". 
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+          - dbt_utils.not_accepted_values:
+              values: [0]
+          - not_null
+  - name: int_census_tract_gtfs_aggregated

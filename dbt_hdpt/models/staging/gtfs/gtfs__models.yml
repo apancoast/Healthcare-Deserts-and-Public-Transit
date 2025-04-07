@@ -111,12 +111,14 @@ models:
               column_type: bigint          
   - name: stg_gtfs__stops
     description: '{{ doc("src_file__stops") }}'
-    data_tests:    
+    data_tests:
+      - unique:
+          column_name: "stop_id || '-' || stop_lat || '-' || stop_lon"
       - row_count_equal_to_source_file:
           source_name: 'gtfs'
           table_name: 'stops'
       - dbt_expectations.expect_table_columns_to_contain_set:
-          column_list: ['stop_id', 'stop_code', 'stop_name', 'stop_lat', 'stop_lon', 'location_type', 'location_type_desc', 'parent_station']
+          column_list: ['stop_id', 'stop_name', 'stop_lat', 'stop_lon', 'location_type', 'location_type_desc', 'parent_station']
     columns:
       - name: stop_id
         type: primary_key
@@ -125,12 +127,7 @@ models:
           - not_null 
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: varchar              
-        description: 'Identifies a location: stop/platform, station, entrance/exit, generic node or boarding area (see location_type). ID must be unique across all stops.stop_id, locations.geojson id, and location_groups.location_group_id values. Multiple routes may use the same stop_id.'
-      - name: stop_code
-        description: Short text or a number that identifies the location for riders. These codes are often used in phone-based transit information systems or printed on signage to make it easier for riders to get information for a particular location. The stop_code may be the same as stop_id if it is public facing. This field should be left empty for locations without a code presented to riders.
-        data_tests:
-          - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: varchar             
+        description: 'Identifies a location: stop/platform, station, entrance/exit, generic node or boarding area (see location_type). ID must be unique across all stops.stop_id, locations.geojson id, and location_groups.location_group_id values. Multiple routes may use the same stop_id.'           
       - name: stop_name
         description: "Name of the location. The stop_name should match the agency's rider-facing name for the location as printed on a timetable, published online, or represented on signage. For translations into other languages, use translations.txt.When the location is a boarding area (location_type=4), the stop_name should contains the name of the boarding area as displayed by the agency. It could be just one letter (like on some European intercity railway stations), or text like \u201CWheelchair boarding area\u201D (NYC\u2019s Subway) or \u201CHead of short trains\u201D (Paris\u2019 RER).Conditionally Required:- Required for locations which are stops (location_type=0), stations (location_type=1) or entrances/exits (location_type=2).- Optional for locations which are generic nodes (location_type=3) or boarding areas (location_type=4)."
         data_tests:
@@ -167,7 +164,9 @@ models:
         description: 'Defines hierarchy between the different locations defined in stops.txt. It contains the ID of the parent location, as followed:- Stop/platform (location_type=0): the parent_station field contains the ID of a station.- Station (location_type=1): this field must be empty.- Entrance/exit (location_type=2) or generic node (location_type=3): the parent_station field contains the ID of a station (location_type=1)- Boarding Area (location_type=4): the parent_station field contains ID of a platform.Conditionally Required:- Required for locations which are entrances (location_type=2), generic nodes (location_type=3) or boarding areas (location_type=4).- Optional for stops/platforms (location_type=0).- Forbidden for stations (location_type=1).'
   - name: stg_gtfs__stop_times
     description: '{{ doc("src_file__stop_times") }}'
-    data_tests:    
+    data_tests:
+      - unique:
+          column_name: "stop_id || '-' || trip_id || '-' || arrival_time"
       - row_count_equal_to_source_file:
           source_name: 'gtfs'
           table_name: 'stop_times'
