@@ -17,10 +17,21 @@ but potential to add:
 - Additional healthcare needs, such as Mental Health and Dental
 
 ## 🏗️ Project Status
-This project is being developed iteratively. While the foundational dbt models are in place, additional transformations, analyses, and refinements are ongoing. You can track the development roadmap via the GitHub Issues and README updates.
 
- Current focus areas include:
-- Finalizing research questions to prioritize modeling efforts.
+### 🚧 Project on Pause (April 2025)
+Due to other life priorities, this project is currently on pause. However, I’m proud of the progress so far and the skills it demonstrates, including:
+- Loading and staging raw data from S3 into DuckDB
+- Developing modular dbt models for analytics and metric calculations
+- Creating Python-based dbt models for API calls and data enrichment
+- Documenting cleaning logic and ensuring consistency with data governance standards
+
+It also highlights soft skills such as:
+- Proactively identifying and addressing data quality issues
+- Modeling with end-user analytics in mind
+- Staying organized and intentional about technical debt during the build process
+
+I look forward to returning to it when I can give it the attention it deserves.
+
 ### 🚀 Project Roadmap
 
 | Milestone                                 | Status         |
@@ -31,9 +42,9 @@ This project is being developed iteratively. While the foundational dbt models a
 | Comprehensive staging layer documentation | ✅ Completed    |
 | Test and validate staging layer           | ✅ Completed     |
 | Design analytical models                | ✅ Completed |
-| Develop intermediate models to support mart layer                | 🔄 In Progress |
+| Develop intermediate models to support mart layer                | ✅ Completed |
 | Test and validate intermediate layer             | ⏳ Upcoming     |
-| Develop mart layer models                | ⏳ Upcoming  |
+| Develop mart layer models                | ✅ Completed  |
 | Test and validate mart layer             | ⏳ Upcoming     |
 | Prepare visualization                     | ⏳ Upcoming     |
 
