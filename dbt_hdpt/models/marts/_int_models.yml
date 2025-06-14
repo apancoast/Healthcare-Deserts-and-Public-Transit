@@ -19,14 +19,14 @@ models:
           - dbt_expectations.expect_column_value_lengths_to_be_between:
               min_value: 14
               max_value: 19
-              row_condition: "census_tract is not null"
       - name: tract_land_sq_meters
         description: Derived using Census Geocode API via python package censusgeocode. [Census Geocoder User Guide](https://www2.census.gov/geo/pdfs/maps-data/data/Census_Geocoder_User_Guide.pdf) states "This field provides land area in square meters for the geographic unit and is for statistical purposes only.". 
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: integer
-          - dbt_utils.not_accepted_values:
-              values: [0]
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              strictly: true
           - not_null
   - name: int_census_tract_gtfs_aggregated
     columns:
@@ -56,7 +56,7 @@ models:
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: integer
       - name: median_trips_per_hour
-        description: "Median number of pickups per hour from unique routes serving the census tract, regardless of stop. Based on service intensity description here: https://vatransit.starchapter.com/images/Transit_Center__How_it_Works_-_TransitCenter_Equity_Dashboard.pdf"
+        description: "Median number of pickups per hour from unique routes serving the census tract, regardless of stop. Based on service intensity description [here](https://vatransit.starchapter.com/images/Transit_Center__How_it_Works_-_TransitCenter_Equity_Dashboard.pdf)"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: integer
