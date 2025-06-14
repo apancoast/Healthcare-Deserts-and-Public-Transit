@@ -40,7 +40,7 @@ models:
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: varchar
       - name: tract_land_sq_meters
-        description: Derived using Census Data API from U.S. Census Bureau. "Annual Geographic Information Table" Geography, GEO Geography Information, Table GEOINFO, -1, https://data.census.gov/table/GEOINFO2023.GEOINFO?q=GEOINFO: Accessed on June 14, 2025.
+        description: "Derived using Census Data API from U.S. Census Bureau. 'Annual Geographic Information Table' Geography, GEO Geography Information, Table GEOINFO, -1, https://data.census.gov/table/GEOINFO2023.GEOINFO?q=GEOINFO: Accessed on June 14, 2025."
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: integer

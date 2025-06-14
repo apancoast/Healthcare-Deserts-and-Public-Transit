@@ -25,6 +25,7 @@ def model(dbt, session):
     # Select and clean relevant columns
     selected = data_df[["NAME", "AREALAND"]].copy()
     selected["NAME"] = selected["NAME"].str.split(";").str[0]
+    selected["AREALAND"] = pd.to_numeric(selected["AREALAND"])
     selected = selected.rename(columns={
         "NAME": "census_tract",
         "AREALAND": "tract_land_sq_meters"
