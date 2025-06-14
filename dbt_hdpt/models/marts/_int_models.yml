@@ -29,3 +29,21 @@ models:
               values: [0]
           - not_null
   - name: int_census_tract_gtfs_aggregated
+  - name: int_census_tract_land_area_enriched
+    columns:
+      - name: census_tract
+        type: primary key
+        description: Foreign key to the census tract which the stop is located in. Derived via stop_lat and stop_long using Python package [censusgeocode](https://pypi.org/project/censusgeocode/).
+        data_tests:
+          - unique
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: varchar
+      - name: tract_land_sq_meters
+        description: "Derived using Census Data API from U.S. Census Bureau. 'Annual Geographic Information Table' Geography, GEO Geography Information, Table GEOINFO, -1, https://data.census.gov/table/GEOINFO2023.GEOINFO?q=GEOINFO: Accessed on June 14, 2025."
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+          - dbt_utils.not_accepted_values:
+              values: [0]
+          - not_null

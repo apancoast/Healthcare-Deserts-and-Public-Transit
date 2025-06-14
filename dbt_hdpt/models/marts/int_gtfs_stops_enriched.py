@@ -11,11 +11,9 @@ def geocode_coordinates(row):
     
     # Extract the relevant fields
     census_tract = tract.get('NAME')
-    tract_land_sq_meters = tract.get('AREALAND')
     
     return pd.Series({
-        'census_tract': str(census_tract),
-        'tract_land_sq_meters': int(tract_land_sq_meters)
+        'census_tract': str(census_tract)
     })
 
 def model(dbt, session):
