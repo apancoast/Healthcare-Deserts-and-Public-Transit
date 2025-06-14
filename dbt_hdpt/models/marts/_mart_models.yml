@@ -2,5 +2,103 @@ version: 2
 
 models:
   - name: census_tracts
+    columns:
+      - name: stop_id
+        type: primary key
+        description: TODO Add PK descriptions to docs.md as they will be most re-used col descriptions
+        data_tests:
+          - unique
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: varchar
+          - dbt_expectations.expect_column_value_lengths_to_be_between:
+              min_value: 14
+              max_value: 19
+          - relationships:
+              to: ref('healthcare_shortage')
+              field: census_tract
+
+      - name: total_population
+        description: Total population in the census tract.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+          # Custom test needed for rough comparison to hpsa_des_pop
+
+      - name: total_households
+        description: Total number of households in the census tract.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+
+      - name: stops_by_sq_meters
+        description: Number of stops per square meter in the census tract.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+
+      - name: households_with_0_vehicles
+        description: Number of households in the census tract with no vehicles.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+
+      - name: households_with_1_vehicle
+        description: Number of households in the census tract with one vehicle.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+
+      - name: households_with_2_vehicles
+        description: Number of households in the census tract with two vehicles.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+
+      - name: households_with_3plus_vehicles
+        description: Number of households in the census tract with three or more vehicles.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+
+      - name: number_of_stops
+        description: The total number of stops in the census tract.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+
+      - name: number_of_trips
+        description: The total number of routes which have at least one stop in the census tract.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+
+      - name: number_of_routes
+        description: The total number of routes which have at least one stop in the census tract.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+
+      - name: pct_covered_by_medicaid
+        description: Percentage of the population in the census tract covered by Medicaid.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float
+          # Custom test needed for calculation check
+
+      - name: pct_covered_by_medicare
+        description: Percentage of the population in the census tract covered by Medicare.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float
+          # Custom test needed for calculation check
+
+      - name: tract_land_sq_meters
+        description: Derived using Census Geocode API via python package censusgeocode. [Census Geocoder User Guide](https://www2.census.gov/geo/pdfs/maps-data/data/Census_Geocoder_User_Guide.pdf) states "This field provides land area in square meters for the geographic unit and is for statistical purposes only.".
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              strictly: true
   - name: healthcare_shortage
   - name: accessibility_metrics
