@@ -29,6 +29,41 @@ models:
               values: [0]
           - not_null
   - name: int_census_tract_gtfs_aggregated
+    columns:
+      - name: census_tract
+        type: primary key
+        description: Foreign key to the census tract which the stop is located in. Derived via stop_lat and stop_long using Python package [censusgeocode](https://pypi.org/project/censusgeocode/).
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: varchar
+          - dbt_expectations.expect_column_value_lengths_to_be_between:
+              min_value: 14
+              max_value: 19
+              row_condition: "census_tract is not null"
+      - name: number_of_stops
+        description: The total number of stops in the census tract.
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+      - name: number_of_trips
+        description: The total number of routes which have at least one stop in the census tract.
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+      - name: number_of_routes
+        description: The total number of routes which have at least one stop in the census tract.
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+      - name: median_trips_per_hour
+        description: "Median number of pickups per hour from unique routes serving the census tract, regardless of stop. Based on service intensity description here: https://vatransit.starchapter.com/images/Transit_Center__How_it_Works_-_TransitCenter_Equity_Dashboard.pdf"
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              strictly: true
   - name: int_census_tract_land_area_enriched
     columns:
       - name: census_tract

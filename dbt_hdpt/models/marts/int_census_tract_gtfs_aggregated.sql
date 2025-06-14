@@ -36,7 +36,7 @@ SELECT
     , c.number_of_routes
     , c.number_of_stops
     , c.number_of_trips
-    , MEDIAN(tph.unique_trips_in_hour) AS median_trips_per_hour
+    , MEDIAN(tph.unique_trips_in_hour)::int AS median_trips_per_hour
 FROM counts c
 JOIN trips_per_hour tph on c.census_tract = tph.census_tract
 GROUP BY ALL
