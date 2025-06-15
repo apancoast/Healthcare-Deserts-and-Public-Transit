@@ -5,7 +5,7 @@ models:
     columns:
       - name: stop_id
         type: primary key
-        description: TODO Add PK descriptions to docs.md as they will be most re-used col descriptions
+        description: '{{ docs("pk__stop_id") }}'
         data_tests:
           - unique
           - not_null
@@ -23,14 +23,15 @@ models:
     columns:
       - name: census_tract
         type: primary key
-        description: Foreign key to the census tract which the stop is located in. Derived via stop_lat and stop_long using Python package [censusgeocode](https://pypi.org/project/censusgeocode/).
+        description: Foreign key to the census tract which the stop_id is located in. Derived via stop_lat and stop_long using Python package [censusgeocode](https://pypi.org/project/censusgeocode/).
         data_tests:
+          - unique
+          - not_null
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: varchar
           - dbt_expectations.expect_column_value_lengths_to_be_between:
               min_value: 14
               max_value: 19
-              row_condition: "census_tract is not null"
       - name: number_of_stops
         description: The total number of stops in the census tract.
         data_tests:
@@ -59,14 +60,14 @@ models:
     columns:
       - name: census_tract
         type: primary key
-        description: Foreign key to the census tract which the stop is located in. Derived via stop_lat and stop_long using Python package [censusgeocode](https://pypi.org/project/censusgeocode/).
+        description: '{{ docs("pk__census_tract") }}'
         data_tests:
           - unique
           - not_null
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: varchar
       - name: tract_land_sq_meters
-        description: "Derived using Census Data API from U.S. Census Bureau. 'Annual Geographic Information Table' Geography, GEO Geography Information, Table GEOINFO, -1, https://data.census.gov/table/GEOINFO2023.GEOINFO?q=GEOINFO: Accessed on June 14, 2025."
+        description: "The estimated land area in square meters for the census tract. Derived using Census Data API from U.S. Census Bureau. 'Annual Geographic Information Table' Geography, GEO Geography Information, Table GEOINFO, -1, https://data.census.gov/table/GEOINFO2023.GEOINFO?q=GEOINFO: Accessed on June 14, 2025."
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: integer

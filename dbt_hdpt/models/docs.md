@@ -167,3 +167,11 @@ Maintained by https://mobilitydata.org/. Column and table data catalog descripti
 **Initial Transformations**: Transformations applied to this model not immediately identifiable in the SQL.
 
 {% enddocs %}
+
+{% docs pk__stop_id %}
+Identifies a location: stop/platform, station, entrance/exit, generic node or boarding area. Multiple routes may use the same stop_id.
+{% enddocs %}
+
+{% docs pk__census_tract %}
+Human-readable identifier of the Census Bureau Census Tract.
+{% enddocs %}
